@@ -1,0 +1,33 @@
+<div id="aqx-auto-random" style="margin: 30px 0; padding: 25px; border-right: 5px solid #d32f2f; background: #fff5f5; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+    <p style="margin: 0 0 10px 0; font-size: 13px; color: #d32f2f; font-weight: bold; text-transform: uppercase;">مقترح لك من القرماني إكس:</p>
+    <a id="auto-random-link" href="#" style="font-size: 18px; color: #333; font-weight: 700; text-decoration: none; line-height: 1.4;">جاري البحث عن محتوى مميز لك...</a>
+</div>
+
+<script>
+(function() {
+    // رابط مدونتك - بيسحب كل المقالات أوتوماتيك
+    var blogUrl = "https://www.alqurmanix.com"; 
+    var currentUrl = window.location.href;
+
+    fetch(blogUrl + '/feeds/posts/default?alt=json&max-results=150')
+    .then(response => response.json())
+    .then(data => {
+        var posts = data.feed.entry;
+        // استبعاد المقال الحالي
+        var filteredPosts = posts.filter(post => {
+            var postUrl = post.link.find(l => l.rel === 'alternate').href;
+            return postUrl !== currentUrl;
+        });
+
+        if (filteredPosts.length > 0) {
+            var randomPost = filteredPosts[Math.floor(Math.random() * filteredPosts.length)];
+            var title = randomPost.title.$t;
+            var url = randomPost.link.find(l => l.rel === 'alternate').href;
+            
+            var linkEl = document.getElementById('auto-random-link');
+            linkEl.innerText = title;
+            linkEl.href = url;
+        }
+    });
+})();
+</script>
