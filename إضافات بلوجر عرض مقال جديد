@@ -1,0 +1,720 @@
+<!-- ===================================================== -->
+<!--        AQX SMART RANDOM POSTS - FULL PROFESSIONAL      -->
+<!-- ===================================================== -->
+
+<div class="aqx-smart-random-card">
+
+  <div class="aqx-card-badge">
+    إضافات قد تعجبك
+  </div>
+
+  <h3 class="aqx-main-title">
+    اكتشف مقالاً برمجياً جديداً
+  </h3>
+
+  <!-- منطقة المقال -->
+  <div id="aqx-random-post-container">
+
+    <div class="aqx-loading-box">
+      جاري البحث داخل المقالات...
+    </div>
+
+  </div>
+
+  <!-- زر التغيير -->
+  <button
+    type="button"
+    class="aqx-refresh-btn"
+    id="aqx-refresh-btn"
+  >
+    <span>مقال آخر</span>
+    <span class="aqx-refresh-icon">⚡</span>
+  </button>
+
+</div>
+
+<!-- ===================================================== -->
+<!--                         CSS                            -->
+<!-- ===================================================== -->
+
+<style>
+
+/* الحاوية */
+
+.aqx-smart-random-card{
+
+  position:relative;
+  overflow:hidden;
+
+  direction:rtl;
+
+  background:
+  linear-gradient(
+    145deg,
+    #ffffff,
+    #f8fbff
+  );
+
+  border:
+  1px solid rgba(0,0,0,.06);
+
+  border-radius:22px;
+
+  padding:24px;
+
+  box-shadow:
+  0 15px 40px rgba(0,0,0,.05);
+
+  transition:.35s ease;
+
+  font-family:
+  "Segoe UI",
+  Tahoma,
+  sans-serif;
+
+  max-width:420px;
+
+}
+
+/* الخط الجانبي */
+
+.aqx-smart-random-card:before{
+
+  content:"";
+
+  position:absolute;
+
+  right:0;
+  top:0;
+
+  width:5px;
+  height:100%;
+
+  background:
+  linear-gradient(
+    to bottom,
+    #4f46e5,
+    #06b6d4
+  );
+
+}
+
+/* الهوفر */
+
+.aqx-smart-random-card:hover{
+
+  transform:
+  translateY(-4px);
+
+  box-shadow:
+  0 20px 50px rgba(79,70,229,.12);
+
+}
+
+/* البادج */
+
+.aqx-card-badge{
+
+  display:inline-block;
+
+  padding:
+  6px 12px;
+
+  border-radius:999px;
+
+  background:
+  rgba(79,70,229,.08);
+
+  color:#4f46e5;
+
+  font-size:11px;
+
+  font-weight:800;
+
+  margin-bottom:14px;
+
+}
+
+/* العنوان */
+
+.aqx-main-title{
+
+  margin:0 0 20px;
+
+  color:#0f172a;
+
+  font-size:20px;
+
+  line-height:1.5;
+
+  font-weight:900;
+
+}
+
+/* اللودنج */
+
+.aqx-loading-box{
+
+  text-align:center;
+
+  padding:30px 10px;
+
+  color:#64748b;
+
+  font-size:14px;
+
+}
+
+/* الرابط */
+
+.aqx-post-link{
+
+  text-decoration:none;
+
+  display:block;
+
+  animation:
+  aqxFade .45s ease;
+
+}
+
+/* البوكس */
+
+.aqx-post-box{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:14px;
+
+  background:#fff;
+
+  border:
+  1px solid #e2e8f0;
+
+  border-radius:18px;
+
+  padding:14px;
+
+  transition:.3s ease;
+
+}
+
+/* الهوفر */
+
+.aqx-post-link:hover .aqx-post-box{
+
+  border-color:#4f46e5;
+
+  transform:
+  translateY(-2px);
+
+  box-shadow:
+  0 10px 25px rgba(79,70,229,.08);
+
+}
+
+/* الصورة */
+
+.aqx-thumb{
+
+  width:88px;
+  height:88px;
+
+  border-radius:14px;
+
+  overflow:hidden;
+
+  flex-shrink:0;
+
+  background:#f1f5f9;
+
+}
+
+.aqx-thumb img{
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  display:block;
+
+}
+
+/* المحتوى */
+
+.aqx-content{
+
+  flex:1;
+
+  min-width:0;
+
+}
+
+/* العنوان */
+
+.aqx-post-title{
+
+  margin:0;
+
+  color:#1e293b;
+
+  font-size:15px;
+
+  line-height:1.8;
+
+  font-weight:800;
+
+}
+
+/* السهم */
+
+.aqx-arrow{
+
+  width:36px;
+  height:36px;
+
+  border-radius:50%;
+
+  background:#eef2ff;
+
+  color:#4f46e5;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  flex-shrink:0;
+
+  font-size:15px;
+
+  font-weight:bold;
+
+  transition:.3s ease;
+
+}
+
+.aqx-post-link:hover .aqx-arrow{
+
+  background:#4f46e5;
+
+  color:#fff;
+
+  transform:
+  translateX(-4px);
+
+}
+
+/* الزر */
+
+.aqx-refresh-btn{
+
+  width:100%;
+
+  margin-top:18px;
+
+  border:none;
+
+  border-radius:14px;
+
+  padding:13px 16px;
+
+  cursor:pointer;
+
+  background:#f1f5f9;
+
+  color:#334155;
+
+  font-size:14px;
+
+  font-weight:800;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:8px;
+
+  transition:.25s ease;
+
+}
+
+.aqx-refresh-btn:hover{
+
+  background:#e2e8f0;
+
+}
+
+.aqx-refresh-btn:hover .aqx-refresh-icon{
+
+  transform:
+  rotate(20deg)
+  scale(1.2);
+
+}
+
+.aqx-refresh-icon{
+
+  transition:.3s ease;
+
+}
+
+/* انيميشن */
+
+@keyframes aqxFade{
+
+  from{
+
+    opacity:0;
+    transform:translateY(8px);
+
+  }
+
+  to{
+
+    opacity:1;
+    transform:translateY(0);
+
+  }
+
+}
+
+/* الموبايل */
+
+@media(max-width:480px){
+
+  .aqx-post-box{
+
+    padding:12px;
+
+  }
+
+  .aqx-thumb{
+
+    width:74px;
+    height:74px;
+
+  }
+
+  .aqx-post-title{
+
+    font-size:14px;
+
+  }
+
+}
+
+</style>
+
+<!-- ===================================================== -->
+<!--                      JAVASCRIPT                        -->
+<!-- ===================================================== -->
+
+<script>
+
+/* ========================================= */
+/*              الإعدادات الأساسية           */
+/* ========================================= */
+
+var AQX_LABEL_NAME = "إضافات بلوجر";
+
+/* ========================================= */
+/*             متغيرات النظام                */
+/* ========================================= */
+
+var aqxAllPosts = [];
+
+var aqxUsedIndexes = [];
+
+var aqxCurrentPostUrl =
+window.location.href;
+
+/* ========================================= */
+/*              جلب المقالات                 */
+/* ========================================= */
+
+function aqxFetchPosts(){
+
+  var blogUrl =
+  window.location.origin;
+
+  var feedUrl =
+  blogUrl +
+  "/feeds/posts/default/-/" +
+  encodeURIComponent(AQX_LABEL_NAME) +
+  "?alt=json-in-script&callback=aqxLoadPosts&max-results=150";
+
+  // حذف السكربت القديم
+
+  var oldScript =
+  document.getElementById(
+    "aqx-feed-script"
+  );
+
+  if(oldScript){
+
+    oldScript.remove();
+
+  }
+
+  // إنشاء السكربت
+
+  var script =
+  document.createElement("script");
+
+  script.src = feedUrl;
+
+  script.id =
+  "aqx-feed-script";
+
+  document.body.appendChild(script);
+
+}
+
+/* ========================================= */
+/*          استقبال البيانات                 */
+/* ========================================= */
+
+function aqxLoadPosts(data){
+
+  var container =
+  document.getElementById(
+    "aqx-random-post-container"
+  );
+
+  if(
+    data.feed &&
+    data.feed.entry &&
+    data.feed.entry.length
+  ){
+
+    aqxAllPosts =
+    data.feed.entry;
+
+    // استبعاد المقال الحالي
+
+    aqxAllPosts =
+    aqxAllPosts.filter(function(entry){
+
+      var postUrl = "";
+
+      for(
+        var i=0;
+        i<entry.link.length;
+        i++
+      ){
+
+        if(
+          entry.link[i].rel ===
+          "alternate"
+        ){
+
+          postUrl =
+          entry.link[i].href;
+
+          break;
+
+        }
+
+      }
+
+      return (
+        postUrl !==
+        aqxCurrentPostUrl
+      );
+
+    });
+
+    // لو مفيش مقالات
+
+    if(!aqxAllPosts.length){
+
+      container.innerHTML =
+      `
+      <div class="aqx-loading-box">
+      لا توجد مقالات متاحة.
+      </div>
+      `;
+
+      return;
+
+    }
+
+    // عرض أول مقال
+
+    aqxShufflePost();
+
+  }
+
+  else{
+
+    container.innerHTML =
+    `
+    <div class="aqx-loading-box">
+    القسم فارغ أو غير موجود.
+    </div>
+    `;
+
+  }
+
+}
+
+/* ========================================= */
+/*        اختيار مقال عشوائي ذكي            */
+/* ========================================= */
+
+function aqxShufflePost(){
+
+  var container =
+  document.getElementById(
+    "aqx-random-post-container"
+  );
+
+  // إعادة ضبط التكرار
+
+  if(
+    aqxUsedIndexes.length >=
+    aqxAllPosts.length
+  ){
+
+    aqxUsedIndexes = [];
+
+  }
+
+  // اختيار رقم غير مستخدم
+
+  var randomIndex;
+
+  do{
+
+    randomIndex =
+    Math.floor(
+      Math.random() *
+      aqxAllPosts.length
+    );
+
+  }
+
+  while(
+    aqxUsedIndexes.includes(
+      randomIndex
+    )
+  );
+
+  aqxUsedIndexes.push(
+    randomIndex
+  );
+
+  var post =
+  aqxAllPosts[randomIndex];
+
+  var postTitle =
+  post.title.$t;
+
+  var postUrl = "#";
+
+  // الرابط
+
+  for(
+    var i=0;
+    i<post.link.length;
+    i++
+  ){
+
+    if(
+      post.link[i].rel ===
+      "alternate"
+    ){
+
+      postUrl =
+      post.link[i].href;
+
+      break;
+
+    }
+
+  }
+
+  // الصورة
+
+  var postImage =
+  "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj-placeholder/s320-rw/no-image.png";
+
+  if(post.media$thumbnail){
+
+    postImage =
+    post.media$thumbnail.url
+    .replace("/s72-c/","/s320/");
+
+  }
+
+  // HTML
+
+  container.innerHTML =
+
+  `
+  <a
+    class="aqx-post-link"
+    href="${postUrl}"
+  >
+
+    <div class="aqx-post-box">
+
+      <div class="aqx-thumb">
+
+        <img
+          src="${postImage}"
+          alt="${postTitle}"
+          loading="lazy"
+        >
+
+      </div>
+
+      <div class="aqx-content">
+
+        <p class="aqx-post-title">
+          ${postTitle}
+        </p>
+
+      </div>
+
+      <div class="aqx-arrow">
+        ←
+      </div>
+
+    </div>
+
+  </a>
+  `;
+
+}
+
+/* ========================================= */
+/*              زر التحديث                   */
+/* ========================================= */
+
+document
+.getElementById(
+  "aqx-refresh-btn"
+)
+.addEventListener(
+  "click",
+  aqxShufflePost
+);
+
+/* ========================================= */
+/*               بدء التشغيل                 */
+/* ========================================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  aqxFetchPosts
+);
+
+</script>
