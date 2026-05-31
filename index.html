@@ -1,1 +1,246 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>القرماني اكس | AQX</title>
+    <!-- خطوط جوجل الاحترافية -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- أيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0a0a12;
+            --card-bg: rgba(20, 20, 35, 0.7);
+            --primary-color: #00f2fe;
+            --secondary-color: #4facfe;
+            --text-color: #ffffff;
+            --text-muted: #8b9bb4;
+            --glow: 0 0 20px rgba(0, 242, 254, 0.6);
+        }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(79, 172, 254, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(0, 242, 254, 0.1) 0px, transparent 50%);
+        }
+
+        /* الخلفية المتحركة */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        header {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: var(--glow);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            padding: 50px 40px;
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            max-width: 700px;
+            width: 100%;
+            transform: translateY(0);
+            transition: all 0.5s ease;
+        }
+
+        .main-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 50px rgba(0, 242, 254, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .avatar-space {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 25px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 40px;
+            font-weight: 900;
+            color: var(--bg-color);
+            box-shadow: var(--glow);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 700;
+        }
+
+        .description {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 35px;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* أزرار روابط التواصل */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            width: 100%;
+        }
+
+        @media (max-width: 600px) {
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+            h1 { font-size: 2rem; }
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 700;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: var(--bg-color);
+            border-color: transparent;
+            box-shadow: var(--glow);
+            transform: scale(1.03);
+        }
+
+        .btn i {
+            font-size: 1.2rem;
+        }
+
+        footer {
+            padding: 25px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-family: 'Orbitron', sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="particles-js"></div>
+
+    <!-- الهيدر العلوي -->
+    <header>
+        <div class="logo">AQX</div>
+        <div style="font-family: 'Orbitron'; font-size: 0.9rem; color: var(--primary-color);">ONLINE</div>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <div class="container">
+        <div class="main-card">
+            <div class="avatar-space">X</div>
+            <h1>القرماني اكس</h1>
+            <div class="subtitle">alqurmani x</div>
+            <p class="description">
+                المنصة الرسمية والمساحة الخاصة بالمشاريع المتقدمة والتطوير الذكي. نبتكر الحلول الرقمية بأعلى معايير الدقة والاحترافية العالمية.
+            </p>
+
+            <!-- شبكة الأزرار والروابط (ضع روابطك هنا) -->
+            <div class="links-grid">
+                <a href="#" class="btn" target="_blank">
+                    <i class="fab fa-github"></i> جيتهاب GitHub
+                </a>
+                <a href="#" class="btn" target="_blank">
+                    <i class="fab fa-telegram"></i> تليجرام Telegram
+                </a>
+                <a href="#" class="btn" target="_blank">
+                    <i class="fas fa-code"></i> المشاريع Projects
+                </a>
+                <a href="#" class="btn" target="_blank">
+                    <i class="fas fa-envelope"></i> تواصل معي Contact
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- الفوتر السفلي -->
+    <footer>
+        &copy; 2026 ALQURMANI X (AQX). All Rights Reserved.
+    </footer>
+
+</body>
+      </html>
