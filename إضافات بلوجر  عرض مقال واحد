@@ -1,0 +1,167 @@
+<!-- بطاقة المقال العشوائي الأنيقة -->
+<div class="elegant-random-card">
+  <div class="card-tag">إضافات قد تعجبك</div>
+  <h3 class="card-teaser-title">نقرة حظ: كنز برمجى قد تبحث عنه!</h3>
+  
+  <div id="dynamic-post-container">
+    <div class="loading-shimmer">جاري البحث في خبايا الأكواد...</div>
+  </div>
+</div>
+
+<!-- التنسيق الاحترافي فائق الأناقة (CSS) -->
+<style>
+.elegant-random-card {
+  background: linear-gradient(145deg, #ffffff, #f8fafd);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  padding: 25px 20px;
+  max-width: 360px; /* مثالي للشريط الجانبي */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  direction: rtl;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.elegant-random-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, #4f46e5, #06b6d4);
+}
+
+.elegant-random-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(79, 70, 229, 0.1);
+}
+
+.card-tag {
+  display: inline-block;
+  background: rgba(79, 70, 229, 0.08);
+  color: #4f46e5;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.card-teaser-title {
+  color: #1e293b;
+  font-size: 17px;
+  font-weight: 800;
+  margin: 0 0 18px 0;
+  line-height: 1.4;
+}
+
+.post-link-wrapper {
+  text-decoration: none;
+  display: block;
+}
+
+.post-interactive-box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.post-link-wrapper:hover .post-interactive-box {
+  border-color: #4f46e5;
+  background: #fafafa;
+}
+
+.post-title-text {
+  color: #334155;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.6;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.post-link-wrapper:hover .post-title-text {
+  color: #4f46e5;
+}
+
+.action-arrow {
+  background: #f1f5f9;
+  color: #4f46e5;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.post-link-wrapper:hover .action-arrow {
+  background: #4f46e5;
+  color: #ffffff;
+  transform: translateX(-3px);
+}
+
+.loading-shimmer {
+  color: #94a3b8;
+  font-size: 13px;
+  text-align: center;
+  padding: 20px 0;
+  font-style: italic;
+}
+</style>
+
+<!-- الذكاء البرمجي لاختيار مقال واحد عشوائي (JavaScript) -->
+<script>
+// <![CDATA[
+function displaySingleRandomPost(json) {
+  var entries = json.feed.entry;
+  var container = document.getElementById('dynamic-post-container');
+  
+  if (entries && entries.length > 0) {
+    // اختيار رقم عشوائي بين 0 وعدد المقالات المسترجعة
+    var randomIndex = Math.floor(Math.random() * entries.length);
+    var selectedEntry = entries[randomIndex];
+    
+    var postTitle = selectedEntry.title.$t;
+    var postUrl = "";
+    
+    // استخراج رابط المقال
+    for (var k = 0; k < selectedEntry.link.length; k++) {
+      if (selectedEntry.link[k].rel == 'alternate') {
+        postUrl = selectedEntry.link[k].href;
+        break;
+      }
+    }
+    
+    // بناء الهيكل البصري الشيك جداً للمقال الفائز
+    container.innerHTML = `
+      <a class="post-link-wrapper" href="${postUrl}">
+        <div class="post-interactive-box">
+          <p class="post-title-text">${postTitle}</p>
+          <div class="action-arrow">←</div>
+        </div>
+      </a>
+    `;
+  } else {
+    container.innerHTML = '<div class="loading-shimmer">لم نجد أي أسرار في هذا القسم بعد!</div>';
+  }
+}
+
+// استدعاء جلب البيانات من قسم "إضافات بلوجر" حصراً
+document.write('<script src="/feeds/posts/default/-/إضافات بلوجر?alt=json-in-script&max-results=150&callback=displaySingleRandomPost"><\/script>');
+// ]]>
+</script>
