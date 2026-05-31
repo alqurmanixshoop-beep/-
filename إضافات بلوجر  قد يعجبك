@@ -1,0 +1,111 @@
+<!-- صندوق المقالات العشوائية المتحركة -->
+<div class="random-posts-box">
+  <!-- العنوان الفضولي المشوق -->
+  <div class="widget-title-flex">
+    <span class="title-text">خبايا قد تهمك: أسرار برمجية لمدونتك</span>
+  </div>
+  
+  <!-- منطقة النصوص المتحركة -->
+  <div class="ticker-container">
+    <marquee direction="up" scrollamount="2" onmouseover="this.stop();" onmouseout="this.start();" id="random-ticker">
+      <!-- سيتم توليد العناوين هنا تلقائياً -->
+      <p style="text-align:center; padding:10px; color:#666;">جاري تحميل الإضافات...</p>
+    </marquee>
+  </div>
+</div>
+
+<!-- التنسيق الخاص بالأداة (CSS) -->
+<style>
+.random-posts-box {
+  background: #ffffff;
+  border: 1px solid #e3e8f0;
+  border-radius: 8px;
+  padding: 15px;
+  max-width: 350px; /* يمكنك تعديل العرض ليناسب شريط مدونتك الجانبي */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  direction: rtl;
+}
+.widget-title-flex {
+  background: linear-gradient(135deg, #ff4b2b, #ff416c);
+  color: #fff;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+.ticker-container {
+  height: 150px; /* الارتفاع المتاح للحركة */
+  overflow: hidden;
+  padding: 5px;
+}
+#random-ticker {
+  height: 100%;
+}
+.ticker-item {
+  display: block;
+  padding: 8px 5px;
+  border-bottom: 1px dashed #eee;
+  color: #333;
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 1.6;
+  transition: color 0.2s ease;
+}
+.ticker-item:hover {
+  color: #ff416c; /* لون الرابط عند مرور الماوس */
+}
+.ticker-item:last-child {
+  border-bottom: none;
+}
+</style>
+
+<!-- السكريبت الذكي لجلب المقالات وعمل العشوائية (JavaScript) -->
+<script>
+// <![CDATA[
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+function getJsonRandomPosts(json) {
+  var entries = json.feed.entry;
+  var tickerContainer = document.getElementById('random-ticker');
+  var htmlCode = "";
+  
+  if (entries && entries.length > 0) {
+    // خلط المقالات بشكل عشوائي
+    var shuffledEntries = shuffleArray(entries);
+    
+    // جلب أول 10 مقالات عشوائية على سبيل المثال
+    var maxPosts = Math.min(shuffledEntries.length, 10); 
+    
+    for (var i = 0; i < maxPosts; i++) {
+      var entry = shuffledEntries[i];
+      var postTitle = entry.title.$t;
+      var postUrl;
+      
+      for (var k = 0; k < entry.link.length; k++) {
+        if (entry.link[k].rel == 'alternate') {
+          postUrl = entry.link[k].href;
+          break;
+        }
+      }
+      
+      htmlCode += '<a class="ticker-item" href="' + postUrl + '">📌 ' + postTitle + '</a>';
+    }
+    tickerContainer.innerHTML = htmlCode;
+  } else {
+    tickerContainer.innerHTML = '<p style="text-align:center; font-size:12px;">لا توجد مقالات في هذا القسم حالياً.</p>';
+  }
+}
+
+// استدعاء التغذية الخاصة بالقسم المحدد "إضافات بلوجر"
+document.write('<script src="/feeds/posts/default/-/إضافات بلوجر?alt=json-in-script&max-results=50&callback=getJsonRandomPosts"><\/script>');
+// ]]>
+</script>
