@@ -1,0 +1,53 @@
+<style>
+#aqx-slider-box {
+    height: 250px;
+    overflow: hidden;
+    background: #ffffff;
+    border-radius: 15px;
+    border: 1px solid #eaeaea;
+    position: relative;
+    padding: 10px;
+}
+.aqx-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    animation: moveUp 15s linear infinite;
+}
+.aqx-list li {
+    padding: 15px;
+    border-bottom: 1px solid #f5f5f5;
+    font-family: sans-serif;
+}
+.aqx-list li a {
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: bold;
+    font-size: 15px;
+}
+@keyframes moveUp {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+}
+</style>
+
+<div id="aqx-slider-box">
+    <ul class="aqx-list" id="aqx-posts">
+        <!-- يتم الجلب هنا -->
+    </ul>
+</div>
+
+<script>
+function getPosts(json) {
+    let list = document.getElementById('aqx-posts');
+    let posts = json.feed.entry;
+    let html = '';
+    for (let i = 0; i < posts.length; i++) {
+        let title = posts[i].title.$t;
+        let link = posts[i].link.find(l => l.rel === 'alternate').href;
+        html += '<li><a href="' + link + '">' + title + '</a></li>';
+    }
+    list.innerHTML = html + html;
+}
+</script>
+<script src="/feeds/posts/default?alt=json-in-script&callback=getPosts&max-results=5"></script>
