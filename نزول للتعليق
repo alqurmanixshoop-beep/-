@@ -1,0 +1,124 @@
+<div class="aqx-comment-box" onclick="aqxGoToComments()">
+  ✨ اكتب تعليقك وخلّي صوتك يوصل ✨
+  <span>رأيك ممكن يغيّر الفكرة ويصنع فرق 💎</span>
+</div>
+
+<style>
+
+/* ===== BOX ===== */
+
+.aqx-comment-box{
+margin:45px auto;
+padding:24px 18px;
+border-radius:20px;
+color:#fff;
+text-align:center;
+font-weight:800;
+font-size:18px;
+cursor:pointer;
+position:relative;
+overflow:hidden;
+box-shadow:0 15px 40px rgba(0,0,0,.25);
+border:1px solid rgba(255,255,255,.15);
+
+/* حركة خفيفة مستمرة */
+animation:floatBox 4s ease-in-out infinite;
+transform:translateY(0);
+}
+
+/* نص فرعي */
+.aqx-comment-box span{
+display:block;
+margin-top:10px;
+font-size:14px;
+font-weight:500;
+opacity:.85;
+}
+
+/* ===== الخلفية المتغيرة ===== */
+
+.aqx-comment-box::before{
+content:"";
+position:absolute;
+inset:0;
+z-index:-1;
+background:linear-gradient(270deg,
+#ff4d4d,
+#ffb84d,
+#4dff88,
+#4dd2ff,
+#b84dff,
+#ff4df2);
+background-size:1200% 1200%;
+animation:gradientMove 12s ease infinite;
+filter:blur(0px);
+}
+
+/* طبقة شفافة فخمة */
+.aqx-comment-box::after{
+content:"";
+position:absolute;
+inset:0;
+z-index:-1;
+background:rgba(0,0,0,.25);
+}
+
+/* ===== hover ===== */
+
+.aqx-comment-box:hover{
+transform:scale(1.04);
+}
+
+/* ===== shake ===== */
+
+.aqx-shake{
+animation:shake .4s ease;
+}
+
+@keyframes shake{
+0%{transform:translateX(0);}
+25%{transform:translateX(-6px);}
+50%{transform:translateX(6px);}
+75%{transform:translateX(-4px);}
+100%{transform:translateX(0);}
+}
+
+/* ===== floating ===== */
+
+@keyframes floatBox{
+0%{transform:translateY(0);}
+50%{transform:translateY(-6px);}
+100%{transform:translateY(0);}
+}
+
+/* ===== gradient animation ===== */
+
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+</style>
+
+<script>
+
+function aqxGoToComments(){
+
+var box = document.querySelector('.aqx-comment-box');
+
+box.classList.add('aqx-shake');
+
+setTimeout(function(){
+box.classList.remove('aqx-shake');
+},400);
+
+var comments = document.getElementById('comments');
+
+if(comments){
+comments.scrollIntoView({behavior:'smooth'});
+}
+
+}
+
+</script>
