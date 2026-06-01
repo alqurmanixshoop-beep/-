@@ -1,0 +1,61 @@
+<style>
+/* القسم الخارجي */
+.box-fakhama {
+    text-align: center;
+    padding: 30px;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 25px;
+    margin: 40px auto;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+.text-fakhama { font-size: 1.4rem; font-weight: 800; color: #2d3436; margin-bottom: 20px; }
+
+/* الأزرار */
+.btn-fakhama {
+    padding: 12px 35px;
+    margin: 5px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: 0.4s;
+    color: white;
+}
+.yes { background: linear-gradient(45deg, #00b894, #00cec9); }
+.no { background: linear-gradient(45deg, #d63031, #ff7675); }
+.btn-fakhama:hover { transform: scale(1.1); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+
+/* النافذة المنبثقة (Popup) الفخمة */
+.modal-overlay {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7); z-index: 9999; justify-content: center; align-items: center;
+}
+.modal-content {
+    background: #fff; padding: 40px; border-radius: 30px; text-align: center;
+    width: 80%; max-width: 400px; box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    animation: zoomIn 0.4s ease;
+}
+@keyframes zoomIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+</style>
+
+<div class="box-fakhama">
+    <div class="text-fakhama">هل كان المقال مفيداً؟ ✨</div>
+    <button class="btn-fakhama yes" onclick="showPopup('شكراً لتقييمك الرائع! 🌟')">نعم ✅</button>
+    <button class="btn-fakhama no" onclick="showPopup('نأسف لذلك، سنكون أفضل! 💡')">لا ❌</button>
+</div>
+
+<div id="fakhamaModal" class="modal-overlay" onclick="this.style.display='none'">
+    <div class="modal-content">
+        <h2 id="modalText" style="font-size: 1.8rem;"></h2>
+    </div>
+</div>
+
+<script>
+function showPopup(msg) {
+    document.getElementById('modalText').innerText = msg;
+    document.getElementById('fakhamaModal').style.display = 'flex';
+    setTimeout(() => { document.getElementById('fakhamaModal').style.display = 'none'; }, 2000);
+}
+</script>
