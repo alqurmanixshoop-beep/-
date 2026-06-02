@@ -1,0 +1,481 @@
+<div class="aqx-culinary-card">
+
+  <div class="aqx-card-overlay"></div>
+
+  <div class="aqx-card-content">
+    <div class="aqx-card-badge">
+      <span class="aqx-icon">👨‍🍳</span> توصية الشيف
+    </div>
+
+    <h3 class="aqx-main-title">
+      استكشف روائع <span class="aqx-highlight">مطبخ القرمانى اكس</span>
+    </h3>
+
+    <div id="aqx-random-post-container">
+
+      <div class="aqx-loading-box">
+        <div class="aqx-shimmer"></div>
+        جاري تحضير الوصفة المختارة...
+      </div>
+
+    </div>
+
+    <button
+      type="button"
+      class="aqx-refresh-btn"
+      id="aqx-refresh-btn"
+    >
+      <span class="aqx-btn-text">اكتشف طبقاً آخر</span>
+      <span class="aqx-refresh-icon">🍽️</span>
+    </button>
+  </div>
+
+</div>
+
+<style>
+/* استيراد خط عربي فخم إذا أمكن، أو الاعتماد على خطوط النظام المحسنة */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@600;900&family=Amiri:wght@700&display=swap');
+
+/* الحاوية الرئيسية - قمة الفخامة */
+.aqx-culinary-card {
+  position: relative;
+  overflow: hidden;
+  direction: rtl;
+  /* خلفية سوداء عميقة مع تدرج ذهبي خفيف */
+  background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+  /* إطار ذهبي رفيع وأنيق */
+  border: 2px solid #d4af37;
+  border-radius: 25px;
+  padding: 30px;
+  /* ظل ناعم وغني توحي بالثقل */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 5px 15px rgba(212, 175, 55, 0.15);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-family: 'Cairo', sans-serif;
+  max-width: 450px;
+  margin: 20px auto;
+}
+
+/* طبقة زخرفية (نمط مطبخ خفي) */
+.aqx-card-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  opacity: 0.03;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48ZyBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNkNGFmMzciIGZpbGwtb3BhY2l0eT0iMSI+PHBhdGggZD0iTTAgMGg0MHY0MEgwVjB6bTIwIDIwaDIwdjIwSDIWMjB6TTAgMjBoMjB2MjBIMFYyMHoyMCAwaDIwdjIwSDIwVjB6Ii8+PC9nPjwvZz48L3N2Zz4=');
+  z-index: 1;
+}
+
+.aqx-card-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* تأثير الهوفر للحاوية */
+.aqx-culinary-card:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 8px 20px rgba(212, 175, 55, 0.25);
+  border-color: #f1c40f; /* تفتيح اللون الذهبي عند الهوفر */
+}
+
+/* البادج - توصية الشيف */
+.aqx-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.2) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: #d4af37;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.1);
+}
+
+.aqx-card-badge .aqx-icon {
+  font-size: 14px;
+}
+
+/* العنوان الرئيسي */
+.aqx-main-title {
+  margin: 0 0 25px;
+  color: #ffffff;
+  font-size: 22px;
+  line-height: 1.4;
+  font-weight: 900;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.aqx-highlight {
+  color: #d4af37;
+  font-family: 'Amiri', serif; /* خط كلاسيكي فخم للاسم */
+  font-size: 1.1em;
+}
+
+/* اللودنج - تأثير الشيمر */
+.aqx-loading-box {
+  position: relative;
+  text-align: center;
+  padding: 40px 10px;
+  color: #a0a0a0;
+  font-size: 15px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.aqx-shimmer {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.05), transparent);
+  animation: aqxShimmerInfinte 1.5s infinite;
+}
+
+@keyframes aqxShimmerInfinte {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* الرابط */
+.aqx-post-link {
+  text-decoration: none;
+  display: block;
+  animation: aqxSlideUp .5s ease-out;
+}
+
+/* بوكس المقال */
+.aqx-post-box {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  border-radius: 20px;
+  padding: 18px;
+  transition: all 0.3s ease;
+}
+
+/* هوفر المقال */
+.aqx-post-link:hover .aqx-post-box {
+  background: rgba(212, 175, 55, 0.05);
+  border-color: rgba(212, 175, 55, 0.5);
+  transform: scale(1.02);
+}
+
+/* الصورة - كأنها لوحة فنية */
+.aqx-thumb {
+  width: 100px;
+  height: 100px;
+  border-radius: 15px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #1a1a1a;
+  border: 2px solid rgba(212, 175, 55, 0.2);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: border-color 0.3s ease;
+}
+
+.aqx-post-link:hover .aqx-thumb {
+  border-color: #d4af37;
+}
+
+.aqx-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.aqx-post-link:hover .aqx-thumb img {
+  transform: scale(1.1);
+}
+
+/* المحتوى */
+.aqx-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* عنوان الوصفة */
+.aqx-post-title {
+  margin: 0;
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 700;
+  /* تحديد سطرين فقط للعنوان */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+.aqx-post-link:hover .aqx-post-title {
+  color: #d4af37;
+}
+
+/* السهم الذهبي */
+.aqx-arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.1);
+  color: #d4af37;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 18px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  transition: all 0.3s ease;
+}
+
+.aqx-post-link:hover .aqx-arrow {
+  background: #d4af37;
+  color: #000;
+  transform: translateX(-5px);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+}
+
+/* الزر الفخم */
+.aqx-refresh-btn {
+  width: 100%;
+  margin-top: 25px;
+  border: none;
+  border-radius: 15px;
+  padding: 15px 20px;
+  cursor:pointer;
+  /* تدرج ذهبي ملكي */
+  background: linear-gradient(135deg, #d4af37 0%, #b59410 100%);
+  color: #000000;
+  font-size: 16px;
+  font-weight: 900;
+  font-family: 'Cairo', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+/* تأثير اللمعان على الزر */
+.aqx-refresh-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%; width: 200%; height: 200%;
+  background: rgba(255,255,255,0.2);
+  transform: rotate(45deg);
+  transition: 0.5s;
+  opacity: 0;
+}
+
+.aqx-refresh-btn:hover {
+  background: linear-gradient(135deg, #f1c40f 0%, #d4af37 100%);
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
+  transform: translateY(-2px);
+}
+
+.aqx-refresh-btn:hover::after {
+  opacity: 1;
+  left: 100%;
+  top: 100%;
+}
+
+.aqx-refresh-btn:active {
+  transform: translateY(1px);
+}
+
+.aqx-refresh-icon {
+  font-size: 18px;
+  transition: .4s ease;
+}
+
+.aqx-refresh-btn:hover .aqx-refresh-icon {
+  transform: rotate(360deg) scale(1.2);
+}
+
+/* انيميشن الدخول */
+@keyframes aqxSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* الموبايل - تحسينات بسيطة */
+@media(max-width:480px){
+  .aqx-culinary-card {
+    padding: 20px;
+  }
+  .aqx-post-box {
+    padding: 15px;
+    gap: 12px;
+  }
+  .aqx-thumb {
+    width: 80px;
+    height: 80px;
+  }
+  .aqx-post-title {
+    font-size: 14px;
+  }
+  .aqx-main-title {
+    font-size: 19px;
+  }
+}
+</style>
+
+<script>
+/* ========================================= */
+/*              الإعدادات الأساسية           */
+/* ========================================= */
+
+// تم تغيير التسمية لتجلب من قسم المطبخ المحدد
+var AQX_LABEL_NAME = "مطبخ القرمانى اكس";
+
+/* ========================================= */
+/*             متغيرات النظام                */
+/* ========================================= */
+var aqxAllPosts = [];
+var aqxUsedIndexes = [];
+var aqxCurrentPostUrl = window.location.href;
+
+/* ========================================= */
+/*              جلب المقالات                 */
+/* ========================================= */
+function aqxFetchPosts(){
+  var blogUrl = window.location.origin;
+  // استخدام max-results=500 لضمان جلب كافة وصفات المطبخ
+  var feedUrl = blogUrl + "/feeds/posts/default/-/" + encodeURIComponent(AQX_LABEL_NAME) + "?alt=json-in-script&callback=aqxLoadPosts&max-results=500";
+
+  var oldScript = document.getElementById("aqx-feed-script");
+  if(oldScript){ oldScript.remove(); }
+
+  var script = document.createElement("script");
+  script.src = feedUrl;
+  script.id = "aqx-feed-script";
+  document.body.appendChild(script);
+}
+
+/* ========================================= */
+/*          استقبال البيانات                 */
+/* ========================================= */
+function aqxLoadPosts(data){
+  var container = document.getElementById("aqx-random-post-container");
+
+  if(data.feed && data.feed.entry && data.feed.entry.length){
+    aqxAllPosts = data.feed.entry;
+
+    // استبعاد المقال الحالي إذا كان مفتوحاً
+    aqxAllPosts = aqxAllPosts.filter(function(entry){
+      var postUrl = "";
+      for(var i=0; i<entry.link.length; i++){
+        if(entry.link[i].rel === "alternate"){
+          postUrl = entry.link[i].href;
+          break;
+        }
+      }
+      return (postUrl !== aqxCurrentPostUrl);
+    });
+
+    if(!aqxAllPosts.length){
+      container.innerHTML = `<div class="aqx-loading-box">لا توجد وصفات أخرى متاحة حالياً في المطبخ.</div>`;
+      return;
+    }
+
+    // عرض أول وصفة عشوائية
+    aqxShufflePost();
+  }
+  else{
+    container.innerHTML = `<div class="aqx-loading-box">قسم ${AQX_LABEL_NAME} فارغ أو غير موجود.</div>`;
+  }
+}
+
+/* ========================================= */
+/*       اختيار وصفة عشوائية ذكية          */
+/* ========================================= */
+function aqxShufflePost(){
+  var container = document.getElementById("aqx-random-post-container");
+
+  // إضافة تأثير خروج سريع قبل التغيير
+  var currentLink = container.querySelector('.aqx-post-link');
+  if(currentLink) {
+      currentLink.style.animation = 'aqxSlideUp 0.3s ease-in reverse forward';
+      // انتظار الانيميشن ينتهي
+      setTimeout(renderNewPost, 300);
+  } else {
+      renderNewPost();
+  }
+
+  function renderNewPost() {
+      // إعادة ضبط التكرار
+      if(aqxUsedIndexes.length >= aqxAllPosts.length){
+        aqxUsedIndexes = [];
+      }
+
+      // اختيار رقم غير مستخدم
+      var randomIndex;
+      do{
+        randomIndex = Math.floor(Math.random() * aqxAllPosts.length);
+      } while(aqxUsedIndexes.includes(randomIndex));
+
+      aqxUsedIndexes.push(randomIndex);
+
+      var post = aqxAllPosts[randomIndex];
+      var postTitle = post.title.$t;
+      var postUrl = "#";
+
+      // الرابط
+      for(var i=0; i<post.link.length; i++){
+        if(post.link[i].rel === "alternate"){
+          postUrl = entry.link[i].href; // تصحيح خطأ إملائي قديم: entry -> post
+          // تصحيح: المتغير فوق اسمه post وليس entry
+          postUrl = post.link[i].href;
+          break;
+        }
+      }
+
+      // الصورة - جودة أفضل
+      var postImage = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj-placeholder/s1600/no-image.png";
+      if(post.media$thumbnail){
+        // جلب صورة بحجم أذبر 640 بكسل للفخامة
+        postImage = post.media$thumbnail.url.replace("/s72-c/","/s640/");
+      }
+
+      // HTML الجديد
+      container.innerHTML = `
+      <a class="aqx-post-link" href="${postUrl}">
+        <div class="aqx-post-box">
+          <div class="aqx-thumb">
+            <img src="${postImage}" alt="${postTitle}" loading="lazy">
+          </div>
+          <div class="aqx-content">
+            <h4 class="aqx-post-title">${postTitle}</h4>
+          </div>
+          <div class="aqx-arrow">←</div>
+        </div>
+      </a>
+      `;
+  }
+}
+
+/* ========================================= */
+/*              زر التحديث                   */
+/* ========================================= */
+document.getElementById("aqx-refresh-btn").addEventListener("click", aqxShufflePost);
+
+/* ========================================= */
+/*               بدء التشغيل                 */
+/* ========================================= */
+document.addEventListener("DOMContentLoaded", aqxFetchPosts);
+</script>
