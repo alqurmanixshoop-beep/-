@@ -1,0 +1,252 @@
+<!-- ===================================================== -->
+<!--        AQX LUXURY CULINARY WIDGET - LIGHT THEME       -->
+<!-- ===================================================== -->
+
+<div class="aqx-light-luxury-container">
+    <div class="aqx-chef-header">
+        <div class="aqx-header-titles">
+            <h3>مطبخ القرمانى اكس</h3>
+            <p>توصيات الشيف الفاخرة</p>
+        </div>
+    </div>
+
+    <div id="aqx-slider-box-light">
+        <ul class="aqx-continuous-list" id="aqx-posts-target">
+            <!-- سيتم حقن العناوين هنا مع الدخان والحلل المتحركة -->
+        </ul>
+    </div>
+</div>
+
+<!-- ===================================================== -->
+<!--             CSS: الفخامة، الدخان، والحركة الفائقة     -->
+<!-- ===================================================== -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@600;800&family=Amiri:wght@700&display=swap');
+
+/* الحاوية باللون الفاتح الراقي */
+.aqx-light-luxury-container {
+    background: linear-gradient(135deg, #ffffff 0%, #fdfbf7 50%, #f9f5eb 100%);
+    border: 2px solid #e8d08b;
+    border-radius: 20px;
+    padding: 25px;
+    direction: rtl;
+    max-width: 480px;
+    margin: 30px auto;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05), inset 0 0 20px rgba(232, 208, 139, 0.2);
+    font-family: 'Cairo', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+/* الهيدر */
+.aqx-chef-header {
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 2px dashed rgba(212, 175, 55, 0.3);
+    padding-bottom: 15px;
+}
+
+.aqx-header-titles h3 {
+    margin: 0;
+    color: #8b6b22;
+    font-family: 'Amiri', serif;
+    font-size: 26px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+}
+
+.aqx-header-titles p {
+    margin: 5px 0 0;
+    color: #666;
+    font-size: 14px;
+}
+
+/* صندوق التمرير (السلايدر) */
+#aqx-slider-box-light {
+    height: 260px;
+    overflow: hidden;
+    position: relative;
+    /* تدرج لإخفاء الأطراف العلوية والسفلية بنعومة */
+    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+}
+
+/* القائمة المتحركة (تم تبطيئها جداً لراحتك) */
+.aqx-continuous-list {
+    list-style: none !important; /* إلغاء أي أرقام أو نقاط افتراضية */
+    padding: 0;
+    margin: 0;
+    /* الحركة أصبحت 45 ثانية بدلاً من 18 ثانية */
+    animation: aqxSlowScroll 45s linear infinite;
+}
+
+.aqx-light-luxury-container:hover .aqx-continuous-list {
+    animation-play-state: paused;
+}
+
+/* عناصر القائمة (العناوين فقط) */
+.aqx-continuous-list li {
+    padding: 18px 10px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* حركة الحلل والمعالق بجانب العنوان */
+.aqx-animated-icons {
+    font-size: 20px;
+    display: inline-block;
+    animation: cookStir 3s ease-in-out infinite;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+@keyframes cookStir {
+    0% { transform: rotate(0deg) translateY(0); }
+    25% { transform: rotate(15deg) translateY(-3px); }
+    75% { transform: rotate(-10deg) translateY(2px); }
+    100% { transform: rotate(0deg) translateY(0); }
+}
+
+/* تنسيق الروابط (العناوين) */
+.aqx-continuous-list li a {
+    text-decoration: none;
+    color: #2c1e16;
+    font-weight: 700;
+    font-size: 16px;
+    flex: 1;
+    line-height: 1.6;
+    transition: color 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.aqx-continuous-list li:hover {
+    background: rgba(232, 208, 139, 0.1);
+    border-radius: 8px;
+}
+
+.aqx-continuous-list li:hover a {
+    color: #b8860b;
+}
+
+/* تأثير الدخان الطاير من العناوين */
+.aqx-title-smoke {
+    position: absolute;
+    right: 35px;
+    bottom: 5px;
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(circle, rgba(150,150,150,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(4px);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.aqx-continuous-list li:hover .aqx-title-smoke {
+    animation: titleSmokeRise 2s infinite ease-out;
+}
+
+@keyframes titleSmokeRise {
+    0% { transform: translateY(0) scale(1) translateX(0); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-30px) scale(3) translateX(-10px); opacity: 0; }
+}
+
+/* حركة التمرير البطيئة */
+@keyframes aqxSlowScroll {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+}
+</style>
+
+<!-- ===================================================== -->
+<!--        JAVASCRIPT: الفرز، العشوائية، والتفاعل الصوتي   -->
+<!-- ===================================================== -->
+<script>
+// إعداد نظام التفاعل الصوتي الاحترافي (Web Audio API) بدون ملفات خارجية
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+function playHoverSound() {
+    if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+    // إنشاء نغمة ناعمة جداً وخافتة تشبه الفقاعة أو الكريستال
+    const osc = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+    
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.1);
+    
+    gainNode.gain.setValueAtTime(0.02, audioCtx.currentTime); // مستوى صوت منخفض ومريح
+    gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
+    
+    osc.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+    
+    osc.start();
+    osc.stop(audioCtx.currentTime + 0.1);
+}
+
+function getLuxuryPosts(json) {
+    let listContainer = document.getElementById('aqx-posts-target');
+    if (!json.feed || !json.feed.entry) {
+        listContainer.innerHTML = '<li style="text-align:center;">لا توجد وصفات متاحة حالياً.</li>';
+        return;
+    }
+
+    let posts = json.feed.entry;
+    let currentUrl = window.location.href;
+    let validPosts = [];
+
+    // استخراج المقالات واستبعاد المقال الحالي
+    for (let i = 0; i < posts.length; i++) {
+        let title = posts[i].title.$t;
+        let alternateLink = posts[i].link.find(l => l.rel === 'alternate');
+        
+        if (alternateLink) {
+            let link = alternateLink.href;
+            if (link !== currentUrl) {
+                validPosts.push({ title: title, link: link });
+            }
+        }
+    }
+
+    if (validPosts.length === 0) {
+        listContainer.innerHTML = '<li style="text-align:center;">لا توجد وصفات أخرى.</li>';
+        return;
+    }
+
+    // سحب عشوائي للعناوين
+    validPosts.sort(() => Math.random() - 0.5);
+
+    // بناء الـ HTML: العناوين فقط + الدخان + الحلل والمعالق
+    let htmlContent = '';
+    for (let i = 0; i < validPosts.length; i++) {
+        htmlContent += `
+        <li onmouseenter="playHoverSound()">
+            <span class="aqx-animated-icons">🥘🥄</span>
+            <a href="${validPosts[i].link}">${validPosts[i].title}</a>
+            <div class="aqx-title-smoke"></div>
+            <div class="aqx-title-smoke" style="animation-delay: 0.5s; right: 50px;"></div>
+        </li>`;
+    }
+
+    // تكرار المحتوى لضمان استمرار الحركة اللانهائية
+    listContainer.innerHTML = htmlContent + htmlContent;
+}
+
+// جلب البيانات من القسم المخصص
+(function() {
+    let labelName = "مطبخ القرمانى اكس"; 
+    let blogOrigin = window.location.origin;
+    let scriptUrl = blogOrigin + '/feeds/posts/default/-/' + encodeURIComponent(labelName) + '?alt=json-in-script&callback=getLuxuryPosts&max-results=150';
+    
+    let dynamicScript = document.createElement('script');
+    dynamicScript.src = scriptUrl;
+    document.body.appendChild(dynamicScript);
+})();
+</script>
