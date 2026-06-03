@@ -114,7 +114,7 @@
         <p id="cakeDesc" style="color:#666; font-family: 'Tajawal', sans-serif; margin-bottom: 20px;">استعد لتجربة مميزة</p>
         
         <button class="aqx-btn" style="background:#ff69b4; color:white;" onclick="openSelectedCake()">شاهد الكيكة كاملة</button>
-        <button class="aqx-btn" style="background:#f0f0f0; color:#333;" onclick="fetchCakeData()">كيكة أخرى عشوائية</button>
+        <button class="aqx-btn" style="background:#f0f0f0; color:#333;" onclick="fetchCakeData()">كيكة أخرى </button>
         <button class="aqx-btn" style="background:#3b5998; color:white;" onclick="shareCakeContent()">مشاركة الكيكة</button>
         
         <input type="hidden" id="currentCakeLink">
