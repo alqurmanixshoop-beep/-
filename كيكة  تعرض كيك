@@ -1,0 +1,158 @@
+<style>
+/* حاوية الكيكة (تظهر حيث تضع الكود) */
+.aqx-cake-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    margin: 20px 0;
+    background: transparent;
+}
+
+.aqx-cake-btn {
+    font-size: 80px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: drop-shadow(0 15px 15px rgba(0,0,0,0.2));
+    animation: floatAnimation 3s infinite ease-in-out;
+}
+
+.aqx-cake-btn:hover {
+    transform: scale(1.2) rotate(5deg);
+}
+
+@keyframes floatAnimation {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* تصميم النافذة المنبثقة الفاخرة */
+.aqx-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+.aqx-modal-box {
+    background: linear-gradient(135deg, #ffffff, #f9f9f9);
+    width: 90%; max-width: 450px;
+    padding: 40px;
+    border-radius: 30px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.aqx-close-btn {
+    position: absolute; top: 20px; right: 20px;
+    cursor: pointer; font-size: 24px; color: #ff69b4;
+    width: 40px; height: 40px; border-radius: 50%;
+    background: #fff; box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    display: flex; align-items: center; justify-content: center;
+}
+
+.aqx-btn {
+    display: block; width: 100%; padding: 15px; margin: 10px 0;
+    border-radius: 15px; border: none; cursor: pointer;
+    font-family: 'Tajawal', sans-serif; font-weight: bold;
+    font-size: 16px; transition: 0.3s;
+}
+
+.aqx-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+</style>
+
+<div class="aqx-cake-wrapper">
+    <div class="aqx-cake-btn" onclick="showCakeModal()">🍰</div>
+</div>
+
+<div id="cakeModal" class="aqx-modal-overlay">
+    <div class="aqx-modal-box">
+        <div class="aqx-close-btn" onclick="closeCakeModal()">✕</div>
+        <h2 id="cakeTitle" style="color:#d63384; font-family: 'Tajawal', sans-serif;">يتم اختيار الكيكة...</h2>
+        <p id="cakeDesc" style="color:#666; font-family: 'Tajawal', sans-serif; margin-bottom: 20px;">استعد لتجربة مميزة</p>
+        
+        <button class="aqx-btn" style="background:#ff69b4; color:white;" onclick="openSelectedCake()">شاهد الكيكة كاملة</button>
+        <button class="aqx-btn" style="background:#f0f0f0; color:#333;" onclick="fetchCakeData()">كيكة أخرى عشوائية</button>
+        <button class="aqx-btn" style="background:#3b5998; color:white;" onclick="shareCakeContent()">مشاركة الكيكة</button>
+        
+        <input type="hidden" id="currentCakeLink">
+    </div>
+</div>
+
+<script>
+// الإعدادات: تأكد من تغيير كلمة "وصفات كيك" أدناه لتطابق اسم التصنيف في مدونتك
+const LABEL_NAME = "وصفات كيك"; 
+const BLOG_URL = window.location.origin;
+
+function showCakeModal() {
+    document.getElementById('cakeModal').style.display = 'flex';
+    fetchCakeData();
+}
+
+function closeCakeModal() {
+    document.getElementById('cakeModal').style.display = 'none';
+}
+
+function openSelectedCake() {
+    const link = document.getElementById('currentCakeLink').value;
+    if(link) window.open(link, '_blank');
+}
+
+// تنظيف النص من الأرقام والرموز قبل النطق
+function cleanTextForSpeech(text) {
+    return text.replace(/[^a-zA-Z\u0600-\u06FF\s]/g, " ").replace(/\s+/g, " ");
+}
+
+async function fetchCakeData() {
+    const titleEl = document.getElementById('cakeTitle');
+    const descEl = document.getElementById('cakeDesc');
+    const linkEl = document.getElementById('currentCakeLink');
+    
+    titleEl.innerText = "نختار لك أطيب كيكة...";
+    
+    try {
+        const response = await fetch(`${BLOG_URL}/feeds/posts/default/-/${LABEL_NAME}?alt=json&max-results=50`);
+        const data = await response.json();
+        const posts = data.feed.entry;
+        
+        // استبعاد المقال الحالي
+        const candidates = posts.filter(p => p.title.$t !== document.title);
+        
+        if(candidates.length > 0) {
+            const randomCake = candidates[Math.floor(Math.random() * candidates.length)];
+            const title = randomCake.title.$t;
+            
+            titleEl.innerText = title;
+            descEl.innerText = "اكتشف طريقتها الآن واستمتع بالطعم";
+            linkEl.value = randomCake.link.find(l => l.rel === 'alternate').href;
+            
+            // التفاعل الصوتي المنقى
+            const cleanTitle = cleanTextForSpeech(title);
+            const msg = new SpeechSynthesisUtterance("مرحبا يا جميل. الكيكة التي اخترناها لك هي" + cleanTitle);
+            msg.lang = 'ar-SA';
+            msg.rate = 1.0;
+            window.speechSynthesis.speak(msg);
+        } else {
+            titleEl.innerText = "لا توجد كيكات أخرى حالياً";
+        }
+    } catch(e) {
+        titleEl.innerText = "حدث خطأ.. تأكد من اسم تصنيف الكيك";
+    }
+}
+
+function shareCakeContent() {
+    const title = document.getElementById('cakeTitle').innerText;
+    const url = document.getElementById('currentCakeLink').value;
+    if (navigator.share) {
+        navigator.share({ title: title, url: url });
+    } else {
+        alert("انسخ هذا الرابط: " + url);
+    }
+}
+</script>
