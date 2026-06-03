@@ -1,4 +1,40 @@
 <style>
+/* تصميم القسم العلوي الفخم */
+.aqx-hero-cta {
+    text-align: center;
+    padding: 30px 10px;
+    margin-bottom: 10px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fffbf5 100%);
+    border-radius: 20px;
+}
+
+.aqx-hero-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: #4a1515; /* عنابي القرماني الفخم */
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    font-family: 'Tajawal', sans-serif;
+}
+
+.aqx-pointing-hand {
+    font-size: 50px;
+    display: inline-block;
+    animation: hand-bounce 1.5s infinite ease-in-out;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.1));
+}
+
+@keyframes hand-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+</style>
+
+<div class="aqx-hero-cta">
+    <div class="aqx-hero-title">✨ اكتشف متعة الطعم .. اختر كيكة تعشقها ✨</div>
+    <div class="aqx-pointing-hand">👇</div>
+</div>
+<style>
 /* حاوية الكيكة (تظهر حيث تضع الكود) */
 .aqx-cake-wrapper {
     display: flex;
