@@ -1,0 +1,151 @@
+<style>
+/* استدعاء خط تجوال الراقي من جوجل */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800&display=swap');
+
+.qarmani-tech-widget {
+    font-family: 'Tajawal', sans-serif;
+    direction: rtl;
+    background: #ffffff;
+    padding: 25px 20px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    max-width: 100%;
+    margin: 0 auto;
+    border: 1px solid #f0f2f5;
+}
+
+.qarmani-tech-title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 800;
+    color: #1a202c;
+    margin-bottom: 30px;
+    position: relative;
+    display: block;
+}
+
+/* خط تجميلي تحت العنوان */
+.qarmani-tech-title::after {
+    content: '';
+    width: 70px;
+    height: 4px;
+    background: linear-gradient(90deg, #007bff, #00d2ff);
+    display: block;
+    margin: 10px auto 0;
+    border-radius: 10px;
+}
+
+.qarmani-tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 15px;
+}
+
+.qarmani-tech-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 10px;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 14px;
+    text-decoration: none;
+    color: #4a5568;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+/* تأثير الفخامة عند مرور الماوس */
+.qarmani-tech-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 20px rgba(0, 123, 255, 0.15);
+    border-color: #007bff;
+    background: #ffffff;
+}
+
+.qarmani-tech-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+    transition: transform 0.3s ease;
+}
+
+.qarmani-tech-card:hover .qarmani-tech-icon {
+    transform: scale(1.2) rotate(5deg);
+}
+
+.qarmani-tech-name {
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.qarmani-tech-card:hover .qarmani-tech-name {
+    color: #007bff;
+}
+</style>
+
+<div class="qarmani-tech-widget">
+    <h2 class="qarmani-tech-title">قسم التقنية</h2>
+    <div class="qarmani-tech-grid">
+        
+        <a href="#" class="qarmani-tech-card" onclick="showWelcomeMsg()">
+            <span class="qarmani-tech-icon">💻</span>
+            <span class="qarmani-tech-name">كمبيوتر</span>
+        </a>
+
+        <a href="#" class="qarmani-tech-card" onclick="showWelcomeMsg()">
+            <span class="qarmani-tech-icon">📱</span>
+            <span class="qarmani-tech-name">موبايل</span>
+        </a>
+
+        <a href="#" class="qarmani-tech-card" onclick="showWelcomeMsg()">
+            <span class="qarmani-tech-icon">🛠️</span>
+            <span class="qarmani-tech-name">تقنيات متنوعة</span>
+        </a>
+
+        <a href="#" class="qarmani-tech-card" onclick="showWelcomeMsg()">
+            <span class="qarmani-tech-icon">🌐</span>
+            <span class="qarmani-tech-name">إنترنت</span>
+        </a>
+
+        <a href="#" class="qarmani-tech-card" onclick="showWelcomeMsg()">
+            <span class="qarmani-tech-icon">💬</span>
+            <span class="qarmani-tech-name">مواقع التواصل الإجتماعي</span>
+        </a>
+
+        <a href="#" class="qarmani-tech-card" onclick="showWelcomeMsg()">
+            <span class="qarmani-tech-icon">👨‍💻</span>
+            <span class="qarmani-tech-name">برمجة وتصميم مواقع</span>
+        </a>
+
+        <a href="#" class="qarmani-tech-card" onclick="showWelcomeMsg()">
+            <span class="qarmani-tech-icon">📲</span>
+            <span class="qarmani-tech-name">تطبيقات إلكترونية</span>
+        </a>
+
+        <a href="#" class="qarmani-tech-card" onclick="showWelcomeMsg()">
+            <span class="qarmani-tech-icon">⚙️</span>
+            <span class="qarmani-tech-name">برامج إلكترونية</span>
+        </a>
+
+        <a href="#" class="qarmani-tech-card" onclick="showWelcomeMsg()">
+            <span class="qarmani-tech-icon">❓</span>
+            <span class="qarmani-tech-name">أسئلة تقنية</span>
+        </a>
+
+        <a href="#" class="qarmani-tech-card" onclick="showWelcomeMsg()">
+            <span class="qarmani-tech-icon">🧩</span>
+            <span class="qarmani-tech-name">منوعات تقنية</span>
+        </a>
+
+    </div>
+</div>
+
+<script>
+// كود الرسالة الترحيبية
+function showWelcomeMsg() {
+    alert('مرحب بيك في قسم تقنيه بالقرماني اكس');
+}
+</script>
