@@ -1,0 +1,340 @@
+<style>
+/* استدعاء خط تجوال الراقي */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght=500;700;800&display=swap');
+
+.qarmani-ai-widget {
+    font-family: 'Tajawal', sans-serif;
+    direction: rtl;
+    background: #ffffff;
+    padding: 30px 20px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    max-width: 100%;
+    margin: 20px auto;
+    border: 1px solid #f1f0f7;
+}
+
+.qarmani-ai-title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 800;
+    color: #4f46e5; /* لون بنفسجي ذكي */
+    margin-bottom: 30px;
+    position: relative;
+    display: block;
+}
+
+/* خط تجميلي مستقبلي تحت العنوان */
+.qarmani-ai-title::after {
+    content: '';
+    width: 70px;
+    height: 4px;
+    background: linear-gradient(90deg, #818cf8, #c084fc);
+    display: block;
+    margin: 10px auto 0;
+    border-radius: 10px;
+}
+
+/* شبكة متناسقة تناسب الأعداد الكبيرة من البنود */
+.qarmani-ai-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 12px;
+}
+
+.qarmani-ai-node {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #1e293b;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+}
+
+/* تأثير التوهج النيون والمستقبلي الشيك جداً عند الحركية */
+.qarmani-ai-node:hover {
+    background: #ffffff;
+    border-color: #a855f7;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(168, 85, 247, 0.12);
+}
+
+.qarmani-ai-icon {
+    font-size: 22px;
+    margin-left: 12px;
+    transition: all 0.3s ease;
+}
+
+.qarmani-ai-node:hover .qarmani-ai-icon {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 4px rgba(168, 85, 247, 0.4));
+}
+
+.qarmani-ai-name {
+    font-size: 14px;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.qarmani-ai-node:hover .qarmani-ai-name {
+    color: #6366f1;
+}
+</style>
+
+<div class="qarmani-ai-widget">
+    <h2 class="qarmani-ai-title">قسم الذكاء الاصطناعي</h2>
+    <div class="qarmani-ai-grid">
+        
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">📰</span>
+            <span class="qarmani-ai-name">أخبار الذكاء الاصطناعي</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🧰</span>
+            <span class="qarmani-ai-name">أدوات الذكاء الاصطناعي</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🔰</span>
+            <span class="qarmani-ai-name">شروحات AI للمبتدئين</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">⚡</span>
+            <span class="qarmani-ai-name">الذكاء الاصطناعي المتقدم</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🤖</span>
+            <span class="qarmani-ai-name">تعلم الآلة (Machine Learning)</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🧠</span>
+            <span class="qarmani-ai-name">التعلم العميق (Deep Learning)</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🕸️</span>
+            <span class="qarmani-ai-name">الشبكات العصبية</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🗣️</span>
+            <span class="qarmani-ai-name">معالجة اللغة الطبيعية (NLP)</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">👁️</span>
+            <span class="qarmani-ai-name">الرؤية الحاسوبية (Computer Vision)</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🌌</span>
+            <span class="qarmani-ai-name">الذكاء الاصطناعي التوليدي</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">💬</span>
+            <span class="qarmani-ai-name">روبوتات الدردشة AI</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">⌨️</span>
+            <span class="qarmani-ai-name">هندسة الأوامر (Prompt Engineering)</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🔄</span>
+            <span class="qarmani-ai-name">أتمتة الأعمال بالذكاء الاصطناعي</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🎯</span>
+            <span class="qarmani-ai-name">الذكاء الاصطناعي في التسويق</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🎓</span>
+            <span class="qarmani-ai-name">الذكاء الاصطناعي في التعليم</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🩺</span>
+            <span class="qarmani-ai-name">الذكاء الاصطناعي في الطب</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🛡️</span>
+            <span class="qarmani-ai-name">الذكاء الاصطناعي في الأمن السيبراني</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🛍️</span>
+            <span class="qarmani-ai-name">الذكاء الاصطناعي في التجارة الإلكترونية</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🎨</span>
+            <span class="qarmani-ai-name">الذكاء الاصطناعي في التصميم والجرافيك</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">✍️</span>
+            <span class="qarmani-ai-name">الذكاء الاصطناعي وصناعة المحتوى</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">💻</span>
+            <span class="qarmani-ai-name">برمجة تطبيقات AI</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🔌</span>
+            <span class="qarmani-ai-name">واجهات API ونماذج الذكاء الاصطناعي</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">⚖️</span>
+            <span class="qarmani-ai-name">مقارنة أدوات الذكاء الاصطناعي</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🧪</span>
+            <span class="qarmani-ai-name">مراجعات وتجارب AI</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🌐</span>
+            <span class="qarmani-ai-name">موقع وتطبيقات AI</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🎬</span>
+            <span class="qarmani-ai-name">توليد الصور والفيديو بالذكاء الاصطناعي</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🎙️</span>
+            <span class="qarmani-ai-name">تحويل النص إلى صوت والعكس</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🔓</span>
+            <span class="qarmani-ai-name">الذكاء الاصطناعي مفتوح المصدر</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🏢</span>
+            <span class="qarmani-ai-name">الشركات الرائدة في AI</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">💵</span>
+            <span class="qarmani-ai-name">الوظائف والربح من AI</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">💡</span>
+            <span class="qarmani-ai-name">مشاريع وأفكار AI</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">📚</span>
+            <span class="qarmani-ai-name">دورات وكورسات AI</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">📜</span>
+            <span class="qarmani-ai-name">أخلاقيات الذكاء الاصطناعي</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🔮</span>
+            <span class="qarmani-ai-name">مستقبل الذكاء الاصطناعي</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🤖</span>
+            <span class="qarmani-ai-name">الذكاء الاصطناعي والروبوتات</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">📊</span>
+            <span class="qarmani-ai-name">تحليل البيانات والبيانات الضخمة</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🔒</span>
+            <span class="qarmani-ai-name">الأمن وحماية نماذج AI</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">📝</span>
+            <span class="qarmani-ai-name">نماذج اللغة الكبيرة (LLMs)</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">👥</span>
+            <span class="qarmani-ai-name">تطوير الوكلاء الذكيين (AI Agents)</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🗺️</span>
+            <span class="qarmani-ai-name">الذكاء الاصطناعي العربي</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🆓</span>
+            <span class="qarmani-ai-name">أدوات مجانية للذكاء الاصطناعي</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">📱</span>
+            <span class="qarmani-ai-name">ذكاء اصطناعي للموبايل</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">👨‍💻</span>
+            <span class="qarmani-ai-name">AI للمبرمجين</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🎥</span>
+            <span class="qarmani-ai-name">AI لليوتيوبرز وصناع المحتوى</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🔬</span>
+            <span class="qarmani-ai-name">تجارب ومختبرات AI</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">📈</span>
+            <span class="qarmani-ai-name">أخبار الشركات والاستثمارات في AI</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">📁</span>
+            <span class="qarmani-ai-name">مكتبة أدوات وملفات AI</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="showAiWelcomeMsg()">
+            <span class="qarmani-ai-icon">🗣️</span>
+            <span class="qarmani-ai-name">مجتمع ونقاشات الذكاء الاصطناعي</span>
+        </a>
+
+    </div>
+</div>
+
+<script>
+// كود الرسالة الترحيبية الخاصة بقسم الذكاء الاصطناعي
+function showAiWelcomeMsg() {
+    alert('مرحب بيك في قسم الذكاء الاصطناعي بالقرماني اكس');
+}
+</script>
