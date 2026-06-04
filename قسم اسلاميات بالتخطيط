@@ -1,0 +1,309 @@
+<style>
+/* استدعاء خط تجوال الراقي */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght=500;700;800&display=swap');
+
+.qarmani-islam-widget {
+    font-family: 'Tajawal', sans-serif;
+    direction: rtl;
+    background: #ffffff;
+    padding: 30px 20px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    max-width: 100%;
+    margin: 20px auto;
+    border: 1px solid #e6f4f1;
+}
+
+.qarmani-islam-title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 800;
+    color: #065f46; /* أخضر عميق وراقي جداً */
+    margin-bottom: 30px;
+    position: relative;
+    display: block;
+}
+
+/* خط تجميلي متدرج تحت العنوان */
+.qarmani-islam-title::after {
+    content: '';
+    width: 70px;
+    height: 4px;
+    background: linear-gradient(90deg, #059669, #34d399);
+    display: block;
+    margin: 10px auto 0;
+    border-radius: 10px;
+}
+
+/* توزيع الأقسام بنظام الكبسولات المرنة */
+.qarmani-islam-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+.qarmani-islam-badge {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    background: #f0fdf4; /* خلفية هادئة مريحة */
+    border: 1px solid #d1fae5;
+    border-radius: 30px; /* شكل كبسولة دائري مميز */
+    text-decoration: none;
+    color: #1e293b;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+/* تأثير التفاعل الفخم عند مرور الماوس */
+.qarmani-islam-badge:hover {
+    background: #ffffff;
+    border-color: #059669;
+    transform: scale(1.04); /* تكبير انسيابي خفيف */
+    box-shadow: 0 8px 20px rgba(5, 150, 105, 0.12);
+}
+
+.qarmani-islam-icon {
+    font-size: 20px;
+    margin-left: 12px;
+    transition: transform 0.3s ease;
+}
+
+.qarmani-islam-badge:hover .qarmani-islam-icon {
+    transform: rotate(15deg) scale(1.1);
+}
+
+.qarmani-islam-name {
+    font-size: 14px;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.qarmani-islam-badge:hover .qarmani-islam-name {
+    color: #059669;
+}
+</style>
+
+<div class="qarmani-islam-widget">
+    <h2 class="qarmani-islam-title">قسم إسلاميات</h2>
+    <div class="qarmani-islam-grid">
+        
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">📖</span>
+            <span class="qarmani-islam-name">القرآن الكريم</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">📑</span>
+            <span class="qarmani-islam-name">تفسير القرآن</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">📜</span>
+            <span class="qarmani-islam-name">علوم القرآن</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">💬</span>
+            <span class="qarmani-islam-name">الأحاديث النبوية</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">🕌</span>
+            <span class="qarmani-islam-name">السيرة النبوية</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">⏳</span>
+            <span class="qarmani-islam-name">قصص الأنبياء</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">👥</span>
+            <span class="qarmani-islam-name">الصحابة والتابعين</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">🕋</span>
+            <span class="qarmani-islam-name">العقيدة الإسلامية</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">⚖️</span>
+            <span class="qarmani-islam-name">الفقه الإسلامي</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">📝</span>
+            <span class="qarmani-islam-name">الفتاوى والأحكام</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">📿</span>
+            <span class="qarmani-islam-name">أذكار وأدعية</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">🌱</span>
+            <span class="qarmani-islam-name">الرقائق والتزكية</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">🤝</span>
+            <span class="qarmani-islam-name">الأخلاق الإسلامية</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">🧕</span>
+            <span class="qarmani-islam-name">المرأة في الإسلام</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">👨‍👩‍👧‍👦</span>
+            <span class="qarmani-islam-name">الأسرة والتربية الإسلامية</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">🌍</span>
+            <span class="qarmani-islam-name">الثقافة الإسلامية</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">🏛️</span>
+            <span class="qarmani-islam-name">التاريخ الإسلامي</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">🏺</span>
+            <span class="qarmani-islam-name">الحضارة الإسلامية</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">👤</span>
+            <span class="qarmani-islam-name">شخصيات إسلامية مؤثرة</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">🔍</span>
+            <span class="qarmani-islam-name">مقارنة الأديان</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">🔬</span>
+            <span class="qarmani-islam-name">الإعجاز العلمي في القرآن والسنة</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">🎤</span>
+            <span class="qarmani-islam-name">خطب ومحاضرات</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">🎧</span>
+            <span class="qarmani-islam-name">دروس دينية صوتية ومرئية</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">🌙</span>
+            <span class="qarmani-islam-name">رمضان والعبادات الموسمية</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">🕋</span>
+            <span class="qarmani-islam-name">الحج والعمرة</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">💰</span>
+            <span class="qarmani-islam-name">الزكاة والصدقات</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">🪙</span>
+            <span class="qarmani-islam-name">المعاملات المالية الإسلامية</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">📊</span>
+            <span class="qarmani-islam-name">الاقتصاد الإسلامي</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">❓</span>
+            <span class="qarmani-islam-name">سؤال وجواب ديني</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">🛡️</span>
+            <span class="qarmani-islam-name">تصحيح المفاهيم والشبهات</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">💻</span>
+            <span class="qarmani-islam-name">الإسلام والتكنولوجيا الحديثة</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">☀️</span>
+            <span class="qarmani-islam-name">الإسلام والحياة اليومية</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">🚀</span>
+            <span class="qarmani-islam-name">التنمية البشرية من منظور إسلامي</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">✨</span>
+            <span class="qarmani-islam-name">تطبيق السنة النبوية</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">💼</span>
+            <span class="qarmani-islam-name">فقه المعاملات المعاصرة</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">📚</span>
+            <span class="qarmani-islam-name">المكتبة الإسلامية</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">✍️</span>
+            <span class="qarmani-islam-name">كتب ومؤلفات إسلامية</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">🎵</span>
+            <span class="qarmani-islam-name">أناشيد وتلاوات</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">🧭</span>
+            <span class="qarmani-islam-name">مواقيت الصلاة والقبلة</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">🏆</span>
+            <span class="qarmani-islam-name">مسابقات إسلامية</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">👶</span>
+            <span class="qarmani-islam-name">للأطفال والناشئة</span>
+        </a>
+
+        <a href="#" class="qarmani-islam-badge" onclick="showIslamWelcomeMsg()">
+            <span class="qarmani-islam-icon">🌐</span>
+            <span class="qarmani-islam-name">الإسلام بلغات متعددة</span>
+        </a>
+
+    </div>
+</div>
+
+<script>
+// كود الرسالة الترحيبية الخاصة بقسم إسلاميات
+function showIslamWelcomeMsg() {
+    alert('مرحب بيك في قسم اسلاميات بالقرماني اكس');
+}
+</script>
