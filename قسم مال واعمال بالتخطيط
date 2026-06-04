@@ -1,0 +1,284 @@
+<style>
+/* استدعاء خط تجوال الراقي */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800&display=swap');
+
+.qarmani-biz-widget {
+    font-family: 'Tajawal', sans-serif;
+    direction: rtl;
+    background: #ffffff;
+    padding: 30px 20px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    max-width: 100%;
+    margin: 20px auto;
+    border: 1px solid #eaeaea;
+}
+
+.qarmani-biz-title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 800;
+    color: #0f2c59; /* لون كحلي مالي فخم */
+    margin-bottom: 30px;
+    position: relative;
+    display: block;
+}
+
+/* خط تجميلي ذهبي تحت العنوان يناسب المال والأعمال */
+.qarmani-biz-title::after {
+    content: '';
+    width: 70px;
+    height: 4px;
+    background: linear-gradient(90deg, #c5a880, #e6c697);
+    display: block;
+    margin: 10px auto 0;
+    border-radius: 10px;
+}
+
+/* توزيع الأقسام بشكل أسطر عريضة متناسقة */
+.qarmani-biz-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+}
+
+.qarmani-biz-row {
+    display: flex;
+    align-items: center;
+    padding: 14px 18px;
+    background: #fdfdfd;
+    border: 1px solid #eff1f4;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #334155;
+    transition: all 0.25s ease-in-out;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+/* تأثير الخط الجانبي المتحرك واللون عند مرور الماوس */
+.qarmani-biz-row::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background: #c5a880; /* ذهبي راقي */
+    transition: width 0.25s ease;
+    z-index: 1;
+}
+
+.qarmani-biz-row:hover::before {
+    width: 5px;
+}
+
+.qarmani-biz-row:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    transform: translateX(-4px); /* إزاحة خفيفة لليمين لتأثير حركي شيك */
+    box-shadow: 0 4px 12px rgba(15, 44, 89, 0.05);
+}
+
+.qarmani-biz-icon {
+    font-size: 22px;
+    margin-left: 15px;
+    z-index: 2;
+    transition: transform 0.25s ease;
+}
+
+.qarmani-biz-row:hover .qarmani-biz-icon {
+    transform: scale(1.15);
+}
+
+.qarmani-biz-name {
+    font-size: 14.5px;
+    font-weight: 700;
+    z-index: 2;
+    transition: color 0.25s ease;
+}
+
+.qarmani-biz-row:hover .qarmani-biz-name {
+    color: #0f2c59;
+}
+</style>
+
+<div class="qarmani-biz-widget">
+    <h2 class="qarmani-biz-title">قسم مال وأعمال</h2>
+    <div class="qarmani-biz-grid">
+        
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">📉</span>
+            <span class="qarmani-biz-name">اقتصاد مالي</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">💱</span>
+            <span class="qarmani-biz-name">العملات وأسواق الفوركس</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">₿</span>
+            <span class="qarmani-biz-name">العملات الرقمية والبلوك تشين</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">🏦</span>
+            <span class="qarmani-biz-name">البنوك والخدمات المصرفية</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">📈</span>
+            <span class="qarmani-biz-name">الاستثمار والتداول</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">📊</span>
+            <span class="qarmani-biz-name">البورصة والأسهم</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">🚀</span>
+            <span class="qarmani-biz-name">ريادة الأعمال والشركات الناشئة</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">💼</span>
+            <span class="qarmani-biz-name">إدارة الأعمال</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">📣</span>
+            <span class="qarmani-biz-name">التسويق والمبيعات</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">🛒</span>
+            <span class="qarmani-biz-name">التجارة الإلكترونية</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">🏭</span>
+            <span class="qarmani-biz-name">الصناعات والتصنيع</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">🏢</span>
+            <span class="qarmani-biz-name">العقارات والاستثمار العقاري</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">💳</span>
+            <span class="qarmani-biz-name">التكنولوجيا المالية (FinTech)</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">📜</span>
+            <span class="qarmani-biz-name">الضرائب والتشريعات المالية</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">🛡️</span>
+            <span class="qarmani-biz-name">التأمين</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">🛢️</span>
+            <span class="qarmani-biz-name">الطاقة والبترول</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">📦</span>
+            <span class="qarmani-biz-name">النقل والخدمات اللوجستية</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">🚢</span>
+            <span class="qarmani-biz-name">الاستيراد والتصدير</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">👥</span>
+            <span class="qarmani-biz-name">الموارد البشرية والتوظيف</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">🌍</span>
+            <span class="qarmani-biz-name">الاقتصاد العالمي</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">🦅</span>
+            <span class="qarmani-biz-name">الاقتصاد المصري والعربي</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">🏪</span>
+            <span class="qarmani-biz-name">المشاريع الصغيرة والمتوسطة</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">🤖</span>
+            <span class="qarmani-biz-name">الذكاء الاصطناعي في الأعمال</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">📝</span>
+            <span class="qarmani-biz-name">تحليل الأسواق والتقارير المالية</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">📰</span>
+            <span class="qarmani-biz-name">أخبار الشركات والاستحواذات</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">👔</span>
+            <span class="qarmani-biz-name">رجال الأعمال والقيادات المؤثرة</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">💰</span>
+            <span class="qarmani-biz-name">التمويل الشخصي وإدارة الأموال</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">📋</span>
+            <span class="qarmani-biz-name">دراسات جدوى ومشروعات</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">⛓️</span>
+            <span class="qarmani-biz-name">سلاسل الإمداد والتوريد</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">⛏️</span>
+            <span class="qarmani-biz-name">التعدين والمعادن</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">🌾</span>
+            <span class="qarmani-biz-name">الزراعة والاستثمار الزراعي</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">🏨</span>
+            <span class="qarmani-biz-name">السياحة والاستثمار الفندقي</span>
+        </a>
+
+        <a href="#" class="qarmani-biz-row" onclick="showBizWelcomeMsg()">
+            <span class="qarmani-biz-icon">🖥️</span>
+            <span class="qarmani-biz-name">التكنولوجيا والصناعة الرقمية</span>
+        </a>
+
+    </div>
+</div>
+
+<script>
+// كود الرسالة الترحيبية الخاصة بقسم المال والأعمال
+function showBizWelcomeMsg() {
+    alert('مرحب بيك في قسم مال وأعمال بالقرماني اكس');
+}
+</script>
