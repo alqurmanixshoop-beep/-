@@ -1,0 +1,1091 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&family=Orbitron:wght@700;900&display=swap');
+
+/* ===== GAMES PAGE STYLES ===== */
+#aqx-games-root {
+  font-family: 'Tajawal', sans-serif;
+  direction: rtl;
+  min-height: 80vh;
+  background: linear-gradient(135deg, #0f0c29 0%, #1a1a4e 40%, #0f3460 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  margin: 20px 0;
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+  box-sizing: border-box;
+}
+
+#aqx-games-root * {
+  box-sizing: border-box;
+}
+
+/* Animated Background Stars - محجوزة داخل الصندوق */
+#aqx-games-root::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 80% 10%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 50% 70%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 10% 80%, rgba(255,255,255,0.7) 0%, transparent 100%),
+    radial-gradient(2px 2px at 90% 60%, rgba(100,200,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 30% 90%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 70% 40%, rgba(255,255,255,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 45% 20%, rgba(255,215,0,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 65% 85%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(2px 2px at 5% 50%, rgba(150,100,255,0.4) 0%, transparent 100%);
+  background-size: 800px 800px;
+  animation: starsMove 60s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes starsMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-800px); }
+}
+
+/* Nebula Effect - محجوزة داخل الصندوق */
+#aqx-games-root::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: 
+    radial-gradient(ellipse at 30% 40%, rgba(100,50,200,0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 60%, rgba(0,100,200,0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(200,50,100,0.08) 0%, transparent 40%);
+  animation: nebula 20s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes nebula {
+  0% { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(10deg) scale(1.1); }
+}
+
+/* Header */
+.aqx-header {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 50px 20px 30px;
+}
+
+.aqx-logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(28px, 5vw, 52px);
+  font-weight: 900;
+  background: linear-gradient(135deg, #FFD700, #FF8C00, #FF4500, #FF69B4, #9B59B6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  letter-spacing: 4px;
+  animation: logoGlow 3s ease-in-out infinite alternate;
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.aqx-logo::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #FFD700, #FF69B4, transparent);
+  border-radius: 2px;
+}
+
+@keyframes logoGlow {
+  0% { filter: drop-shadow(0 0 10px rgba(255,215,0,0.5)); }
+  100% { filter: drop-shadow(0 0 25px rgba(255,105,180,0.8)); }
+}
+
+.aqx-tagline {
+  color: rgba(255,255,255,0.7);
+  font-size: clamp(13px, 2vw, 16px);
+  margin-top: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.aqx-stats {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.aqx-stat {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 8px 20px;
+  color: rgba(255,255,255,0.8);
+  font-size: 13px;
+  backdrop-filter: blur(5px);
+}
+
+.aqx-stat span {
+  color: #FFD700;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* Search Bar */
+.aqx-search-wrap {
+  position: relative;
+  z-index: 10;
+  max-width: 500px;
+  margin: 20px auto 40px;
+  padding: 0 20px;
+}
+
+.aqx-search {
+  width: 100%;
+  padding: 14px 50px 14px 20px;
+  border-radius: 50px;
+  border: 2px solid rgba(255,215,0,0.3);
+  background: rgba(255,255,255,0.07);
+  color: #fff;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 15px;
+  outline: none;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  direction: rtl;
+}
+
+.aqx-search:focus {
+  border-color: rgba(255,215,0,0.7);
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 0 20px rgba(255,215,0,0.2);
+}
+
+.aqx-search::placeholder {
+  color: rgba(255,255,255,0.4);
+}
+
+/* Category Filter */
+.aqx-cats {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 40px;
+  padding: 0 20px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 10;
+}
+
+.aqx-cat {
+  padding: 8px 20px;
+  border-radius: 30px;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.7);
+  font-family: 'Tajawal', sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  margin: 0;
+}
+
+.aqx-cat:hover, .aqx-cat.active {
+  background: linear-gradient(135deg, rgba(255,215,0,0.3), rgba(255,69,0,0.3));
+  border-color: rgba(255,215,0,0.6);
+  color: #FFD700;
+  transform: translateY(-2px);
+}
+
+/* Games Grid */
+.aqx-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+  padding: 0 30px 60px;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+/* Game Card */
+.aqx-card {
+  background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(10px);
+  position: relative;
+  animation: cardIn 0.6s ease backwards;
+}
+
+.aqx-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: rgba(255,215,0,0.4);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.5),
+    0 0 30px rgba(255,215,0,0.15),
+    inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+.aqx-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--card-color, #FFD700), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.aqx-card:hover::before {
+  opacity: 1;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.aqx-card-img-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+/* Fake image using gradient + icon */
+.aqx-card-thumb {
+  width: 100%;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease;
+}
+
+.aqx-card:hover .aqx-card-thumb {
+  transform: scale(1.05);
+}
+
+.aqx-card-thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.6));
+}
+
+.aqx-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(135deg, #FF4500, #FF69B4);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  z-index: 2;
+  letter-spacing: 1px;
+}
+
+.aqx-card-body {
+  padding: 16px;
+}
+
+.aqx-card-title {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 6px;
+  line-height: 1.3;
+}
+
+.aqx-card-desc {
+  color: rgba(255,255,255,0.55);
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 0 0 14px;
+}
+
+.aqx-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.aqx-stars {
+  color: #FFD700;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.aqx-play-btn {
+  background: linear-gradient(135deg, var(--card-color, #FFD700), var(--card-color2, #FF8C00));
+  border: none;
+  border-radius: 25px;
+  padding: 8px 18px;
+  color: #1a1a1a;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.aqx-play-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 20px rgba(255,140,0,0.5);
+}
+
+.aqx-play-btn::after {
+  content: '▶';
+  font-size: 10px;
+}
+
+/* ===== SPLASH MODAL ===== */
+.aqx-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  animation: overlayIn 0.4s ease forwards;
+}
+
+@keyframes overlayIn {
+  to { opacity: 1; }
+}
+
+.aqx-modal {
+  position: relative;
+  width: 90%;
+  max-width: 480px;
+  text-align: center;
+  direction: rtl;
+  animation: modalBounce 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes modalBounce {
+  0% { transform: scale(0.5) rotate(-5deg); opacity: 0; }
+  70% { transform: scale(1.05) rotate(1deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.aqx-modal-inner {
+  background: linear-gradient(145deg, #1a0533, #0a1628, #001f3f);
+  border-radius: 28px;
+  padding: 40px 30px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.aqx-modal-inner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #FFD700, #FF69B4, #9B59B6, #00D2FF, #FFD700);
+  background-size: 200% auto;
+  animation: shimmer 2s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+.aqx-modal-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.aqx-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  animation: particleFloat linear infinite;
+}
+
+@keyframes particleFloat {
+  0% { transform: translateY(100%) scale(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 0.5; }
+  100% { transform: translateY(-100px) scale(1); opacity: 0; }
+}
+
+.aqx-modal-game-icon {
+  font-size: 80px;
+  margin-bottom: 15px;
+  display: block;
+  animation: iconPulse 1.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(255,215,0,0.6));
+}
+
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.aqx-modal-welcome {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.aqx-modal-game-name {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(20px, 5vw, 28px);
+  font-weight: 900;
+  background: linear-gradient(135deg, #FFD700, #FF69B4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 8px;
+  line-height: 1.2;
+}
+
+.aqx-modal-site {
+  color: rgba(100,200,255,0.8);
+  font-size: 13px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.aqx-modal-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #FFD700, transparent);
+  margin: 15px auto;
+}
+
+.aqx-modal-desc {
+  color: rgba(255,255,255,0.65);
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.aqx-modal-countdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.aqx-countdown-bar-wrap {
+  flex: 1;
+  height: 6px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.aqx-countdown-bar {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #FFD700, #FF69B4, #9B59B6);
+  border-radius: 3px;
+  transform-origin: right center;
+  animation: countdownBar 2.5s linear forwards;
+}
+
+@keyframes countdownBar {
+  0% { transform: scaleX(1); }
+  100% { transform: scaleX(0); }
+}
+
+.aqx-countdown-num {
+  color: #FFD700;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  min-width: 30px;
+  text-align: center;
+}
+
+.aqx-modal-launching {
+  color: rgba(255,255,255,0.4);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* ===== FLIP ANIMATION ===== */
+@keyframes cardFlip {
+  0% { transform: scale(1) rotateY(0deg); }
+  25% { transform: scale(0.95) rotateY(90deg); }
+  50% { transform: scale(1.05) rotateY(180deg); }
+  75% { transform: scale(0.98) rotateY(270deg); }
+  100% { transform: scale(1) rotateY(360deg); }
+}
+
+.aqx-card.flipping {
+  animation: cardFlip 0.7s ease forwards;
+}
+
+/* Footer bar */
+.aqx-footer {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 30px 20px;
+  color: rgba(255,255,255,0.3);
+  font-size: 12px;
+  letter-spacing: 2px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-top: 20px;
+}
+
+.aqx-footer strong {
+  color: rgba(255,215,0,0.6);
+}
+
+/* Sound toggle - محجوز داخل الصندوق أعلى اليسار */
+.aqx-sound-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 200;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+}
+
+.aqx-sound-btn:hover {
+  background: rgba(255,215,0,0.2);
+  border-color: rgba(255,215,0,0.5);
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .aqx-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 14px;
+    padding: 0 14px 40px;
+  }
+  .aqx-card-thumb { height: 120px; font-size: 40px; }
+  .aqx-sound-btn { top: 15px; left: 15px; width: 40px; height: 40px; font-size: 16px; }
+}
+</style>
+
+<div id="aqx-games-root">
+
+  <button class="aqx-sound-btn" id="aqx-sound-toggle" title="تشغيل/إيقاف الصوت" onclick="toggleSound()">🔊</button>
+
+  <header class="aqx-header">
+    <div class="aqx-logo">القرمانى اكس AQX</div>
+    <div class="aqx-tagline">🎮 العالم الذكي للألعاب الترفيهية</div>
+    <div class="aqx-stats">
+      <div class="aqx-stat">🎯 <span id="game-count">30</span>+ لعبة</div>
+      <div class="aqx-stat">👥 <span>∞</span> لاعب</div>
+      <div class="aqx-stat">⚡ مجاناً 100%</div>
+    </div>
+  </header>
+
+  <div class="aqx-search-wrap">
+    <input class="aqx-search" type="text" id="aqx-search" placeholder="🔍 ابحث عن لعبتك المفضلة..." oninput="filterGames()">
+  </div>
+
+  <div class="aqx-cats">
+    <button class="aqx-cat active" onclick="filterCat(this,'all')">🌟 الكل</button>
+    <button class="aqx-cat" onclick="filterCat(this,'mind')">🧠 تفكير</button>
+    <button class="aqx-cat" onclick="filterCat(this,'chance')">🎲 حظ</button>
+    <button class="aqx-cat" onclick="filterCat(this,'speed')">⚡ سرعة</button>
+    <button class="aqx-cat" onclick="filterCat(this,'knowledge')">📚 معلومات</button>
+    <button class="aqx-cat" onclick="filterCat(this,'cards')">🃏 ورق</button>
+    <button class="aqx-cat" onclick="filterCat(this,'board')">♟️ طاولة</button>
+    <button class="aqx-cat" onclick="filterCat(this,'fun')">🎉 مرح</button>
+  </div>
+
+  <div class="aqx-grid" id="aqx-grid"></div>
+
+  <footer class="aqx-footer">
+    <strong>القرمانى اكس AQX</strong> — جميع الحقوق محفوظة © 2024
+  </footer>
+
+</div>
+
+<script>
+// ===== GAMES DATA =====
+const AQX_GAMES = [
+  {
+    id: 1, name: 'XO', icon: '❌', color: '#FF6B6B', color2: '#FF8E53',
+    cat: 'mind', stars: 5, badge: '🔥 الأكثر لعباً',
+    desc: 'تحدى صديقك في لعبة إكس أو الكلاسيكية. من يملأ الصف أولاً يفوز!',
+    link: '#'
+  },
+  {
+    id: 2, name: 'اضرب السعر صح', icon: '💰', color: '#FFD700', color2: '#FF8C00',
+    cat: 'mind', stars: 4, badge: '💡 تحدي ذكي',
+    desc: 'خمّن السعر الصحيح للمنتج وكن الأقرب للسعر الحقيقي.',
+    link: '#'
+  },
+  {
+    id: 3, name: 'مين الأسرع', icon: '⚡', color: '#00D2FF', color2: '#3A7BD5',
+    cat: 'speed', stars: 5, badge: '⚡ مثير',
+    desc: 'اختبر سرعة رد فعلك. اضغط بأسرع ما يمكن حين تظهر الإشارة!',
+    link: '#'
+  },
+  {
+    id: 4, name: 'عجلة الحظ AQX', icon: '🎡', color: '#A855F7', color2: '#EC4899',
+    cat: 'chance', stars: 5, badge: '🎰 جديد',
+    desc: 'أدر العجلة واستمتع بمفاجآت لا تتوقعها. الحظ وحده يحكم!',
+    link: '#'
+  },
+  {
+    id: 5, name: 'خمّن الدولة من العلم', icon: '🌍', color: '#10B981', color2: '#059669',
+    cat: 'knowledge', stars: 4, badge: '📚 ثقافي',
+    desc: 'شاهد علم الدولة وخمّن اسمها. كم دولة تعرف من علمها؟',
+    link: '#'
+  },
+  {
+    id: 6, name: 'الدولار الهارب', icon: '💵', color: '#34D399', color2: '#10B981',
+    cat: 'speed', stars: 4, badge: '🏃 مطاردة',
+    desc: 'الدولار يهرب والأسعار ترتفع! الحق الدولار قبل ما يختفي.',
+    link: '#'
+  },
+  {
+    id: 7, name: 'اسحب الصندوق الصح', icon: '📦', color: '#F59E0B', color2: '#EF4444',
+    cat: 'chance', stars: 4, badge: '🎁 مفاجأة',
+    desc: 'ثلاثة صناديق وجائزة واحدة. اختر بحذر واربح الجائزة الكبرى!',
+    link: '#'
+  },
+  {
+    id: 8, name: 'من سيربح المليون', icon: '🏆', color: '#FBBF24', color2: '#F59E0B',
+    cat: 'knowledge', stars: 5, badge: '👑 الأشهر',
+    desc: 'أسئلة ومستويات كلما تقدمت زادت الجائزة. هل تصل للمليون؟',
+    link: '#'
+  },
+  {
+    id: 9, name: 'طاولة الزهر', icon: '🎲', color: '#8B5CF6', color2: '#7C3AED',
+    cat: 'board', stars: 4, badge: '♟️ كلاسيك',
+    desc: 'العب طاولة الزهر الشهيرة واهزم خصمك بالاستراتيجية والحظ.',
+    link: '#'
+  },
+  {
+    id: 10, name: 'شطرنج', icon: '♟️', color: '#1E293B', color2: '#334155',
+    cat: 'board', stars: 5, badge: '🧠 استراتيجي',
+    desc: 'لعبة الملوك والعقول. ضع استراتيجيتك وأوقع خصمك في المطب.',
+    link: '#'
+  },
+  {
+    id: 11, name: 'كوتشينة', icon: '🃏', color: '#EF4444', color2: '#DC2626',
+    cat: 'cards', stars: 5, badge: '🎴 مصري',
+    desc: 'الكوتشينة المصرية الأصلية مع التأثيرات والصوت الحي.',
+    link: '#'
+  },
+  {
+    id: 12, name: 'تحدي الكلمات', icon: '📝', color: '#06B6D4', color2: '#0891B2',
+    cat: 'knowledge', stars: 4, badge: '🔤 لغوي',
+    desc: 'كوّن كلمات من الحروف المبعثرة قبل نفاد الوقت.',
+    link: '#'
+  },
+  {
+    id: 13, name: 'ذاكرة الحيوانات', icon: '🐘', color: '#84CC16', color2: '#65A30D',
+    cat: 'mind', stars: 4, badge: '🎯 دقة',
+    desc: 'اقلب البطاقات وابحث عن الأزواج المتشابهة. تدرب ذاكرتك!',
+    link: '#'
+  },
+  {
+    id: 14, name: 'رسم وخمّن', icon: '🎨', color: '#F97316', color2: '#EA580C',
+    cat: 'fun', stars: 5, badge: '🎭 مرح',
+    desc: 'العب مع أصدقائك. ارسم الكلمة وخلّي صاحبك يخمّن!',
+    link: '#'
+  },
+  {
+    id: 15, name: 'تيك تاك توي', icon: '🔢', color: '#EC4899', color2: '#DB2777',
+    cat: 'mind', stars: 3, badge: '🧮 ذكي',
+    desc: 'نسخة متطورة من إكس أو مع شبكة 5×5 وتحديات أصعب.',
+    link: '#'
+  },
+  {
+    id: 16, name: 'العد التنازلي', icon: '⏱️', color: '#6366F1', color2: '#4F46E5',
+    cat: 'speed', stars: 4, badge: '⏰ ضغط',
+    desc: 'الوقت يجري، والأسئلة لا تنتهي. هل تستطيع الإجابة بسرعة؟',
+    link: '#'
+  },
+  {
+    id: 17, name: 'لعبة الثعبان', icon: '🐍', color: '#22C55E', color2: '#16A34A',
+    cat: 'speed', stars: 5, badge: '🔥 كلاسيك',
+    desc: 'الثعبان الشهير الذي أدمنّا عليه. تحكم بالثعبان وابتعد عن جسمك!',
+    link: '#'
+  },
+  {
+    id: 18, name: 'سؤال وجواب', icon: '❓', color: '#F43F5E', color2: '#E11D48',
+    cat: 'knowledge', stars: 4, badge: '📖 ثقافة',
+    desc: 'مئات الأسئلة في كل المجالات. ثقف نفسك وتسلى في نفس الوقت.',
+    link: '#'
+  },
+  {
+    id: 19, name: 'مضاعفة الأرقام', icon: '🔢', color: '#0EA5E9', color2: '#0284C7',
+    cat: 'mind', stars: 3, badge: '➕ رياضيات',
+    desc: 'لعبة رياضيات ممتعة. جمّع الأرقام المتشابهة وصل للرقم المستهدف.',
+    link: '#'
+  },
+  {
+    id: 20, name: 'بازل الصور', icon: '🧩', color: '#D946EF', color2: '#A21CAF',
+    cat: 'mind', stars: 4, badge: '🧩 تركيب',
+    desc: 'رتّب الصورة المفككة بأسرع وقت. تحدى نفسك في المستويات الصعبة.',
+    link: '#'
+  },
+  {
+    id: 21, name: 'الكلمة المخفية', icon: '🔍', color: '#14B8A6', color2: '#0D9488',
+    cat: 'knowledge', stars: 4, badge: '🔎 بحث',
+    desc: 'ابحث عن الكلمات المخفية في شبكة الحروف. سابق الزمن!',
+    link: '#'
+  },
+  {
+    id: 22, name: 'الأحجية', icon: '🤔', color: '#FB923C', color2: '#F97316',
+    cat: 'mind', stars: 5, badge: '🧠 تحدي',
+    desc: 'أحاجي وألغاز تصعّب عليك التفكير. من يحلها في أقل وقت؟',
+    link: '#'
+  },
+  {
+    id: 23, name: 'دومينو', icon: '⚫', color: '#475569', color2: '#334155',
+    cat: 'board', stars: 4, badge: '🎯 استراتيجي',
+    desc: 'العب الدومينو الكلاسيكي واهزم خصمك بأفضل الحركات.',
+    link: '#'
+  },
+  {
+    id: 24, name: 'التخمين الأعلى', icon: '📊', color: '#8B5CF6', color2: '#6D28D9',
+    cat: 'chance', stars: 3, badge: '🎰 تخمين',
+    desc: 'رقم عشوائي بين 1 و 100. كم تخمين تحتاج للوصول إليه؟',
+    link: '#'
+  },
+  {
+    id: 25, name: 'ماذا لو؟', icon: '💭', color: '#EC4899', color2: '#BE185D',
+    cat: 'fun', stars: 4, badge: '🎭 اجتماعي',
+    desc: 'أسئلة مضحكة ومواقف طريفة. العب مع أصدقائك وكشف شخصياتهم.',
+    link: '#'
+  },
+  {
+    id: 26, name: 'حظ الكيتشن', icon: '🍕', color: '#EF4444', color2: '#B91C1C',
+    cat: 'chance', stars: 3, badge: '🎡 عشوائي',
+    desc: 'عجلة عشوائية تختار لك وجبتك أو قرارك اليومي.',
+    link: '#'
+  },
+  {
+    id: 27, name: 'اصح ولا غلط', icon: '✅', color: '#10B981', color2: '#047857',
+    cat: 'knowledge', stars: 4, badge: '✔️ معرفة',
+    desc: 'معلومات وحقائق. صح أم غلط؟ ثق بمعلوماتك واجمع النقاط!',
+    link: '#'
+  },
+  {
+    id: 28, name: 'لعبة الألوان', icon: '🌈', color: '#F59E0B', color2: '#D97706',
+    cat: 'speed', stars: 3, badge: '🎨 سريع',
+    desc: 'اضغط على اللون الصحيح بأسرع ما يمكن. لا تخطئ!',
+    link: '#'
+  },
+  {
+    id: 29, name: 'بلاك جاك', icon: '🃏', color: '#1D4ED8', color2: '#1E40AF',
+    cat: 'cards', stars: 5, badge: '💎 كازينو',
+    desc: 'العب بلاك جاك كالمحترفين. 21 هو هدفك، لا تتجاوزه!',
+    link: '#'
+  },
+  {
+    id: 30, name: 'مباراة الأبطال', icon: '🥊', color: '#DC2626', color2: '#991B1B',
+    cat: 'fun', stars: 5, badge: '👊 تحدي',
+    desc: 'تنافس مع الآخرين في سلسلة من التحديات السريعة. من يكون البطل؟',
+    link: '#'
+  },
+];
+
+let soundEnabled = true;
+let currentModal = null;
+let countdownInterval = null;
+const AudioContext = window.AudioContext || window.webkitAudioContext;
+let audioCtx = null;
+
+function getAudioCtx() {
+  if (!audioCtx) audioCtx = new AudioContext();
+  return audioCtx;
+}
+
+// ===== SOUND EFFECTS =====
+function playTone(freq, type = 'sine', duration = 0.1, vol = 0.3) {
+  if (!soundEnabled) return;
+  try {
+    const ctx = getAudioCtx();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.type = type;
+    osc.frequency.setValueAtTime(freq, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(freq * 0.5, ctx.currentTime + duration);
+    gain.gain.setValueAtTime(vol, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + duration);
+  } catch(e) {}
+}
+
+function playHoverSound() { playTone(440, 'sine', 0.06, 0.1); }
+function playClickSound() {
+  if (!soundEnabled) return;
+  try {
+    const ctx = getAudioCtx();
+    [523, 659, 784, 1047].forEach((f, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.frequency.value = f; osc.type = 'triangle';
+      gain.gain.setValueAtTime(0.2, ctx.currentTime + i * 0.07);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.07 + 0.1);
+      osc.start(ctx.currentTime + i * 0.07);
+      osc.stop(ctx.currentTime + i * 0.07 + 0.15);
+    });
+  } catch(e) {}
+}
+
+function playLaunchSound() {
+  if (!soundEnabled) return;
+  try {
+    const ctx = getAudioCtx();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(200, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(1200, ctx.currentTime + 0.8);
+    gain.gain.setValueAtTime(0.4, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.8);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.8);
+  } catch(e) {}
+}
+
+function toggleSound() {
+  soundEnabled = !soundEnabled;
+  document.getElementById('aqx-sound-toggle').textContent = soundEnabled ? '🔊' : '🔇';
+  if (soundEnabled) playTone(880, 'sine', 0.15, 0.3);
+}
+
+// ===== RENDER CARDS =====
+function renderCards(list) {
+  const grid = document.getElementById('aqx-grid');
+  grid.innerHTML = '';
+  if (!list.length) {
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:rgba(255,255,255,0.3);padding:60px;font-size:18px;">😅 لا توجد ألعاب بهذا البحث</div>';
+    return;
+  }
+  list.forEach((g, idx) => {
+    const card = document.createElement('div');
+    card.className = 'aqx-card';
+    card.dataset.cat = g.cat;
+    card.dataset.id = g.id;
+    card.style.setProperty('--card-color', g.color);
+    card.style.setProperty('--card-color2', g.color2);
+    card.style.animationDelay = (idx * 0.05) + 's';
+
+    card.innerHTML = `
+      <div class="aqx-card-img-wrap">
+        <div class="aqx-card-thumb" style="background:linear-gradient(135deg,${g.color}33,${g.color2}55)">
+          ${g.icon}
+        </div>
+        ${g.badge ? `<div class="aqx-badge">${g.badge}</div>` : ''}
+      </div>
+      <div class="aqx-card-body">
+        <div class="aqx-card-title">${g.name}</div>
+        <div class="aqx-card-desc">${g.desc}</div>
+        <div class="aqx-card-footer">
+          <div class="aqx-stars">${'★'.repeat(g.stars)}${'☆'.repeat(5-g.stars)}</div>
+          <button class="aqx-play-btn" style="background:linear-gradient(135deg,${g.color},${g.color2})">ابدأ اللعب</button>
+        </div>
+      </div>
+    `;
+
+    card.addEventListener('mouseenter', () => playHoverSound());
+    card.addEventListener('click', () => openGameModal(g, card));
+    grid.appendChild(card);
+  });
+  document.getElementById('game-count').textContent = AQX_GAMES.length;
+}
+
+// ===== FILTER =====
+let currentCat = 'all';
+
+function filterGames() {
+  const q = document.getElementById('aqx-search').value.trim().toLowerCase();
+  const filtered = AQX_GAMES.filter(g => {
+    const matchCat = currentCat === 'all' || g.cat === currentCat;
+    const matchQ = !q || g.name.includes(q) || g.desc.includes(q);
+    return matchCat && matchQ;
+  });
+  renderCards(filtered);
+}
+
+function filterCat(btn, cat) {
+  document.querySelectorAll('.aqx-cat').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentCat = cat;
+  playTone(330, 'triangle', 0.08, 0.2);
+  filterGames();
+}
+
+// ===== MODAL =====
+function openGameModal(game, cardEl) {
+  playClickSound();
+
+  // Flip the card
+  cardEl.classList.add('flipping');
+  setTimeout(() => cardEl.classList.remove('flipping'), 700);
+
+  // Remove existing modal
+  if (currentModal) {
+    document.body.removeChild(currentModal);
+    if (countdownInterval) clearInterval(countdownInterval);
+  }
+
+  // Create overlay
+  const overlay = document.createElement('div');
+  overlay.className = 'aqx-modal-overlay';
+
+  // Create particles HTML
+  let particlesHTML = '';
+  const colors = [game.color, game.color2, '#FFD700', '#FF69B4', '#fff'];
+  for (let i = 0; i < 20; i++) {
+    const c = colors[i % colors.length];
+    const x = Math.random() * 100;
+    const dur = 1.5 + Math.random() * 3;
+    const delay = Math.random() * 2;
+    const size = 3 + Math.random() * 6;
+    particlesHTML += `<div class="aqx-particle" style="left:${x}%;background:${c};width:${size}px;height:${size}px;animation-duration:${dur}s;animation-delay:${delay}s;"></div>`;
+  }
+
+  overlay.innerHTML = `
+    <div class="aqx-modal">
+      <div class="aqx-modal-inner">
+        <div class="aqx-modal-particles">${particlesHTML}</div>
+        <div class="aqx-modal-game-icon">${game.icon}</div>
+        <div class="aqx-modal-welcome">🎮 أهلاً وسهلاً بك في</div>
+        <h2 class="aqx-modal-game-name">${game.name}</h2>
+        <div class="aqx-modal-site">✨ القرمانى اكس AQX ✨</div>
+        <div class="aqx-modal-divider"></div>
+        <div class="aqx-modal-desc">${game.desc}</div>
+        <div class="aqx-modal-countdown">
+          <div class="aqx-countdown-bar-wrap">
+            <div class="aqx-countdown-bar"></div>
+          </div>
+          <div class="aqx-countdown-num" id="modal-timer">3</div>
+        </div>
+        <div class="aqx-modal-launching">🚀 جارٍ تحميل اللعبة...</div>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+  currentModal = overlay;
+
+  // Countdown
+  let secs = 3;
+  const timerEl = overlay.querySelector('#modal-timer');
+  playLaunchSound();
+
+  countdownInterval = setInterval(() => {
+    secs--;
+    if (timerEl) timerEl.textContent = secs;
+    playTone(300 + secs * 100, 'sine', 0.08, 0.25);
+    if (secs <= 0) {
+      clearInterval(countdownInterval);
+      // Launch game
+      setTimeout(() => {
+        if (currentModal) {
+          document.body.removeChild(currentModal);
+          currentModal = null;
+        }
+        if (game.link && game.link !== '#') {
+          window.location.href = game.link;
+        } else {
+          showPlaceholder(game);
+        }
+      }, 400);
+    }
+  }, 1000);
+
+  // Close on overlay click
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      clearInterval(countdownInterval);
+      document.body.removeChild(overlay);
+      currentModal = null;
+    }
+  });
+}
+
+function showPlaceholder(game) {
+  const msg = document.createElement('div');
+  msg.style.cssText = `
+    position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;
+    background:rgba(0,0,0,0.9);backdrop-filter:blur(10px);
+  `;
+  msg.innerHTML = `
+    <div style="text-align:center;color:#fff;direction:rtl;padding:40px;max-width:400px;">
+      <div style="font-size:80px;margin-bottom:20px;">${game.icon}</div>
+      <h2 style="font-family:'Orbitron',sans-serif;color:#FFD700;margin:0 0 15px;">${game.name}</h2>
+      <p style="color:rgba(255,255,255,0.6);font-family:'Tajawal',sans-serif;line-height:1.7;">
+        الرابط لم يُضف بعد. استبدل <strong style="color:#FFD700;">#</strong> في الكود برابط اللعبة الحقيقي.
+      </p>
+      <button onclick="this.parentElement.parentElement.remove()" style="
+        margin-top:20px;padding:12px 30px;border-radius:25px;border:none;
+        background:linear-gradient(135deg,${game.color},${game.color2});
+        color:#fff;font-family:'Tajawal',sans-serif;font-size:15px;font-weight:700;
+        cursor:pointer;
+      ">حسناً، فهمت!</button>
+    </div>
+  `;
+  msg.addEventListener('click', (e) => { if(e.target===msg) msg.remove(); });
+  document.body.appendChild(msg);
+}
+
+// ===== INIT =====
+renderCards(AQX_GAMES);
+
+// Add hover sound to categories and search
+document.querySelectorAll('.aqx-cat').forEach(b => b.addEventListener('mouseenter', () => playTone(220, 'sine', 0.05, 0.08)));
+</script>
