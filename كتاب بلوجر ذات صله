@@ -1,0 +1,224 @@
+<div class="aqx-magic-wrapper" id="aqx-magic-wrap">
+  <h3 class="aqx-magic-title">✨ خبايا وأسرار بلوجر</h3>
+  
+  <div class="aqx-book-trigger" id="aqx-book-element" onclick="openAqxBook()">
+    <div class="aqx-book-cover">
+      <svg viewBox="0 0 24 24" class="aqx-blogger-icon">
+        <path d="M16 3H8C5.2 3 3 5.2 3 8v8c0 2.8 2.2 5 5 5h8c2.8 0 5-2.2 5-5V8c0-2.8-2.2-5-5-5zM12.5 15H9c-1.1 0-2-.9-2-2v-2c0-1.1.9-2 2-2h.5V8c0-1.1.9-2 2-2h2c1.1 0 2 .9 2 2v2c0 1.1-.9 2-2 2h-1v1h1.5c1.1 0 2 .9 2 2v2c0 1.1-.9 2-2 2z"/>
+      </svg>
+      <span class="aqx-click-txt">اضغط لفتح الدليل</span>
+    </div>
+    <div class="aqx-book-pages"></div>
+  </div>
+
+  <div id="aqx-posts-reveal" class="aqx-hidden-posts"></div>
+</div>
+
+<style>
+.aqx-magic-wrapper {
+  margin: 30px auto;
+  padding: 25px;
+  max-width: 600px;
+  background: #fdfefe;
+  border-radius: 24px;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+  font-family: 'Tajawal', 'Cairo', sans-serif;
+  direction: rtl;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.04);
+  overflow: hidden;
+  position: relative;
+}
+.aqx-magic-title {
+  color: #0f172a;
+  font-size: 20px;
+  font-weight: 900;
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+.aqx-book-trigger {
+  display: inline-block;
+  position: relative;
+  width: 125px;
+  height: 165px;
+  cursor: pointer;
+  perspective: 1000px;
+  transform-origin: center center;
+  animation: aqxSubtleIdle 4s ease-in-out infinite;
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+.aqx-book-trigger:hover {
+  transform: scale(1.03);
+}
+.aqx-book-cover {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  border-radius: 4px 14px 14px 4px;
+  box-shadow: inset 3px 0 8px rgba(255,255,255,0.25), 5px 8px 18px rgba(234, 88, 12, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
+}
+.aqx-book-pages {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  right: -5px;
+  width: 5px;
+  background: #ffffff;
+  border-radius: 0 3px 3px 0;
+  border: 1px solid #fed7aa;
+  z-index: 1;
+}
+.aqx-blogger-icon {
+  width: 50px;
+  height: 50px;
+  fill: #ffffff;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 3px 5px rgba(0,0,0,0.1));
+}
+.aqx-click-txt {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  background: rgba(255,255,255,0.22);
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+/* الحركة الخفيفة الثابتة في مكانها */
+@keyframes aqxSubtleIdle {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-4px) rotate(1deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* الشقلبة عند الضغط */
+.aqx-tumble {
+  animation: tumble3D 0.75s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards !important;
+}
+@keyframes tumble3D {
+  0% { transform: scale(1) rotateY(0deg) rotateZ(0deg); opacity: 1; }
+  40% { transform: scale(1.15) rotateY(180deg) rotateZ(-10deg); opacity: 0.9; }
+  100% { transform: scale(0) rotateY(360deg) rotateZ(20deg); opacity: 0; display: none; }
+}
+
+/* استعراض المقالات بسلاسة */
+.aqx-hidden-posts {
+  display: none;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.5s ease;
+}
+.aqx-show-posts {
+  display: block;
+  animation: smoothReveal 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: 0.3s;
+}
+@keyframes smoothReveal {
+  to { opacity: 1; transform: scale(1); }
+}
+
+.aqx-item-card {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  padding: 14px;
+  border-radius: 18px;
+  margin-bottom: 15px;
+  border: 1px solid #e0f2fe;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.03);
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+  text-align: right;
+}
+.aqx-item-card:hover {
+  transform: translateX(-5px);
+  border-color: #0ea5e9;
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.12);
+}
+.aqx-item-card img {
+  width: 75px;
+  height: 75px;
+  border-radius: 12px;
+  object-fit: cover;
+  margin-left: 15px;
+  border: 1px solid #f1f5f9;
+}
+.aqx-item-details h4 {
+  color: #1e293b;
+  font-size: 15px;
+  font-weight: 800;
+  margin: 0 0 6px 0;
+  line-height: 1.5;
+  transition: color 0.3s;
+}
+.aqx-item-card:hover .aqx-item-details h4 {
+  color: #0284c7;
+}
+.aqx-read-btn {
+  font-size: 11px;
+  color: #0284c7;
+  background: #e0f2fe;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+</style>
+
+<script>
+var aqxFetchedHtml = "";
+(function() {
+  var labelName = "بلوجر"; 
+  var maxPosts = 10; 
+  var currentUrl = window.location.href.split('?')[0];
+  var script = document.createElement('script');
+  script.src = "/feeds/posts/default/-/" + labelName + "?alt=json-in-script&callback=aqxPreloadData&max-results=" + maxPosts;
+  document.body.appendChild(script);
+
+  window.aqxPreloadData = function(json) {
+    var entries = json.feed.entry;
+    if (!entries) return;
+    var filtered = entries.filter(function(e) {
+      var link = "";
+      for (var i = 0; i < e.link.length; i++) {
+        if (e.link[i].rel == 'alternate') { link = e.link[i].href; break; }
+      }
+      return link.split('?')[0] !== currentUrl;
+    });
+    filtered.sort(function() { return 0.5 - Math.random() });
+    var selection = filtered.slice(0, 2);
+    for (var j = 0; j < selection.length; j++) {
+      var entry = selection[j];
+      var title = entry.title.$t;
+      var url = "";
+      for (var k = 0; k < entry.link.length; k++) {
+        if (entry.link[k].rel == 'alternate') { url = entry.link[k].href; break; }
+      }
+      var thumb = entry.media$thumbnail ? entry.media$thumbnail.url.replace('s72-c', 'w150-h150-p') : "https://placehold.co/150x150/e0f2fe/0ea5e9?text=Blogger";
+      aqxFetchedHtml += "<a href='" + url + "' class='aqx-item-card'>" +
+              "<img src='" + thumb + "' alt='Blogger Post'/>" +
+              "<div class='aqx-item-details'>" +
+              "<h4>" + title + "</h4>" +
+              "<span class='aqx-read-btn'>تصفح الشرح الموصى به</span>" +
+              "</div></a>";
+    }
+  };
+})();
+
+function openAqxBook() {
+  var book = document.getElementById('aqx-book-element');
+  var postsContainer = document.getElementById('aqx-posts-reveal');
+  book.classList.add('aqx-tumble');
+  setTimeout(function() {
+    book.style.display = 'none';
+    postsContainer.innerHTML = aqxFetchedHtml || "<p style='color:#0284c7;'>جاري فتح الدليل الموصى به...</p>";
+    postsContainer.classList.add('aqx-show-posts');
+  }, 700);
+}
+</script>
