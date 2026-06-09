@@ -1,0 +1,81 @@
+<style>
+
+/* ===== استهداف أي عنوان رئيسي داخل صفحة المقال ===== */
+.item-view h1 {
+
+  position: relative !important;
+  display: block !important;
+  width: fit-content !important;
+  max-width: 100% !important;
+  margin: 20px auto !important;
+  padding: 14px 22px !important;
+
+  text-align: center !important;
+  font-weight: 700 !important;
+  font-size: clamp(22px, 3.2vw, 34px) !important;
+  line-height: 1.4 !important;
+
+  border-radius: 12px !important;
+
+  /* ذهب متحرك */
+  background: linear-gradient(270deg,
+    #d4af37,
+    #ffd700,
+    #ffcc33,
+    #e6be8a,
+    #c9a227,
+    #ffd700,
+    #b8960c
+  ) !important;
+
+  background-size: 1200% 120% !important;
+  animation: goldFlow 10s ease infinite !important;
+
+  color: #000 !important;
+
+}
+
+/* حركة */
+@keyframes goldFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+</style>
+<style>
+
+/* لمعة متحركة فوق العنوان */
+.item-view h1::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+
+  background: linear-gradient(
+    110deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.4) 45%,
+    rgba(255,255,255,0) 70%
+  );
+
+  transform: translateX(-120%);
+  animation: shine 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ظل أفخم */
+.item-view h1 {
+  box-shadow:
+    0 8px 25px rgba(0,0,0,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+}
+
+/* أنيميشن اللمعة */
+@keyframes shine {
+  0% { transform: translateX(-120%); }
+  60% { transform: translateX(120%); }
+  100% { transform: translateX(120%); }
+}
+
+</style>
