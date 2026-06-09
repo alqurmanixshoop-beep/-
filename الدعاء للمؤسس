@@ -1,164 +1,392 @@
-<!-- حاوية الذكر المطور - القرماني كاش -->
-<div id="qx-gold-space">
-
-    <!-- الأيقونة المتحركة -->
-    <div id="qx-trigger-btn"> نورتنا ✨</div>
-
-    <!-- النافذة -->
-    <div id="qx-dua-overlay">
-        <div class="qx-dua-card">
-            <div class="qx-close-x" onclick="closeGoldDua()">×</div>
-            <div class="qx-badge-label">رسالة قرمانية</div>
-            <p id="qx-dua-content"></p>
-            <div class="qx-gold-line"></div>
-            <div class="qx-user-name">مؤسس alqurmani  x</div>
-            <div class="qx-user-sub">محمد بسيوني</div>
+<div id="qxz-wrap" dir="rtl">
+  <div id="qxz-btn"><span id="qxz-star">🌟</span></div>
+  <div id="qxz-modal">
+    <div id="qxz-card">
+      <div id="qxz-snake"></div>
+      <div id="qxz-content">
+        <div id="qxz-close">&#10005;</div>
+        <div id="qxz-head">رسالة قرمانية</div>
+        <div id="qxz-quote-box">
+          <span id="qxz-qmark">🤲</span>
+          <div id="qxz-text"></div>
         </div>
+        <div id="qxz-brand">
+          <div id="qxz-b-right">
+            <span id="qxz-role">مؤسس alqurmani x</span>
+            <span id="qxz-name">محمد بسيوني</span>
+          </div>
+          <div id="qxz-b-left">
+            <div id="qxz-b-icon"><span>AQX</span></div>
+          </div>
+        </div>
+      </div>
     </div>
-
+  </div>
 </div>
 
 <style>
-/* إعدادات الألوان */
-:root { --main-clr: #bf953f; }
+  /* --- إعدادات أساسية --- */
+  #qxz-wrap {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  }
+  #qxz-wrap *, #qxz-wrap *::before, #qxz-wrap *::after {
+    box-sizing: border-box !important;
+    margin: 0;
+    padding: 0;
+  }
 
-#qx-trigger-btn {
-    position: fixed;
-    bottom: 25px;
-    left: 25px;
-    background: var(--main-clr);
-    color: #000;
-    padding: 12px 22px;
-    border-radius: 50px;
-    font-weight: bold;
-    cursor: grab;
-    z-index: 9999999;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    user-select: none;
-    direction: rtl;
-}
+  /* --- زر الفتح --- */
+  #qxz-btn {
+    position: fixed !important;
+    bottom: 25px !important;
+    left: 25px !important;
+    width: 55px !important;
+    height: 55px !important;
+    border-radius: 50% !important;
+    z-index: 2147483640 !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 26px !important;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3) !important;
+    border: 2px solid rgba(255,255,255,0.85) !important;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    -webkit-tap-highlight-color: transparent;
+  }
+  #qxz-btn:hover {
+    transform: scale(1.15) !important;
+  }
+  #qxz-star {
+    display: inline-block !important;
+    animation: qxzSpinStar 3.5s linear infinite !important;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.4)) !important;
+    line-height: 1 !important;
+  }
+  @keyframes qxzSpinStar { 100% { transform: rotate(360deg); } }
+  
+  @keyframes qxzCycCol { 
+    0%{background:#e91e63;} 20%{background:#9c27b0;} 
+    40%{background:#2196f3;} 60%{background:#00bcd4;} 
+    80%{background:#4caf50;} 100%{background:#ff9800;} 
+  }
+  .qx-dyn-btn { animation: qxzCycCol 8s infinite alternate ease-in-out !important; }
+  .qx-gld-btn { background: linear-gradient(135deg, #bf953f, #ffeb8a, #d4af37) !important; }
 
-#qx-dua-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.9);
-    z-index: 99999999;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(5px);
-}
+  /* --- النافذة المنبثقة (تم إصلاح العرض والظهور) --- */
+  #qxz-modal {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 2147483645 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(10, 10, 15, 0.65) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    padding: 15px !important;
+    
+    /* استخدام الشفافية والرؤية لتجنب مشاكل العرض المفاجئ */
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: opacity 0.4s ease, visibility 0.4s ease !important;
+  }
+  
+  /* كلاس التفعيل للنافذة */
+  #qxz-modal.qx-show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
 
-.qx-dua-card {
-    background: #0a0a0a;
-    border: 2px solid var(--main-clr);
-    padding: 40px 25px;
-    max-width: 500px;
-    width: 85%;
-    text-align: center;
-    color: #fff;
-    border-radius: 20px;
-    position: relative;
-    direction: rtl;
-}
+  /* --- الكارت الداخلي --- */
+  #qxz-card {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 480px !important;
+    padding: 4px !important;
+    border-radius: 28px !important;
+    overflow: hidden !important;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5) !important;
+    
+    /* تأثير الدخول */
+    transform: scale(0.8) translateY(30px) !important;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  }
+  #qxz-modal.qx-show #qxz-card {
+    transform: scale(1) translateY(0) !important;
+  }
 
-.qx-badge-label {
-    background: var(--main-clr);
-    color: #000;
-    display: inline-block;
-    padding: 5px 15px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    font-weight: bold;
-}
+  /* --- الأنيميشن المحيط (Snake) --- */
+  #qxz-snake {
+    position: absolute !important;
+    top: -50% !important;
+    left: -50% !important;
+    width: 200% !important;
+    height: 200% !important;
+    z-index: 1 !important;
+  }
+  @keyframes qxzSnakeSpin { 100% { transform: rotate(360deg); } }
+  .qx-gld-snk {
+    background: conic-gradient(from 0deg, #bf953f, #ffeb8a, #d4af37, #8a5a19, #f9f295, #c5a059, #bf953f) !important;
+    animation: qxzSnakeSpin 3s linear infinite !important;
+  }
 
-#qx-dua-content {
-    font-size: 19px;
-    line-height: 1.7;
-    color: #eee;
-    margin: 15px 0;
-}
+  /* --- المحتوى الداخلي --- */
+  #qxz-content {
+    position: relative !important;
+    z-index: 2 !important;
+    background: #ffffff !important;
+    border-radius: 25px !important;
+    padding: 35px 25px 25px !important;
+    direction: rtl !important;
+    text-align: right !important;
+  }
+  
+  /* --- زر الإغلاق --- */
+  #qxz-close {
+    position: absolute !important;
+    top: 18px !important;
+    left: 18px !important;
+    width: 34px !important;
+    height: 34px !important;
+    background: rgba(0,0,0,0.06) !important;
+    color: #444 !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 18px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    font-weight: bold !important;
+    -webkit-tap-highlight-color: transparent;
+  }
+  #qxz-close:hover {
+    background: #e74c3c !important;
+    color: #fff !important;
+    transform: rotate(90deg) scale(1.1) !important;
+  }
 
-.qx-gold-line {
-    width: 60px;
-    height: 3px;
-    background: var(--main-clr);
-    margin: 20px auto;
-}
+  /* --- العناوين والنصوص --- */
+  #qxz-head {
+    display: inline-block !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    background: #111 !important;
+    color: #fff !important;
+    padding: 6px 18px !important;
+    border-radius: 20px !important;
+    margin-bottom: 25px !important;
+    letter-spacing: 1px !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15) !important;
+  }
 
-.qx-user-name { font-size: 22px; font-weight: bold; }
-.qx-user-sub { color: var(--main-clr); margin-top: 5px; }
+  #qxz-quote-box {
+    position: relative !important;
+    padding: 35px 25px 25px !important;
+    background: rgba(255,255,255,0.7) !important;
+    border: 1px solid rgba(0,0,0,0.06) !important;
+    border-radius: 18px !important;
+    margin-bottom: 30px !important;
+    box-shadow: inset 0 5px 20px rgba(0,0,0,0.02), 0 5px 15px rgba(0,0,0,0.03) !important;
+    text-align: center !important;
+  }
+  #qxz-qmark {
+    position: absolute !important;
+    top: -25px !important;
+    right: 25px !important;
+    font-size: 55px !important;
+    line-height: 1 !important;
+    color: #bf953f !important;
+    background: transparent !important;
+  }
+  #qxz-text {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    color: #222 !important;
+    line-height: 1.85 !important;
+    text-shadow: 0 1px 1px rgba(255,255,255,0.8) !important;
+    font-family: serif !important;
+  }
 
-.qx-close-x {
-    position: absolute;
-    right: 20px;
-    top: 10px;
-    color: var(--main-clr);
-    font-size: 35px;
-    cursor: pointer;
-}
+  /* --- التوقيع (Brand) --- */
+  #qxz-brand {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 14px 20px !important;
+    background: linear-gradient(145deg, #f8f9fa, #eef1f5) !important;
+    border-radius: 16px !important;
+    border-right: 5px solid #bf953f !important;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.06) !important;
+  }
+  #qxz-b-right { display: flex !important; flex-direction: column !important; }
+  #qxz-role {
+    font-size: 11px !important;
+    color: #666 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.5px !important;
+    margin-bottom: 4px !important;
+    font-weight: 800 !important;
+  }
+  #qxz-name {
+    font-size: 17px !important;
+    font-weight: 900 !important;
+    color: #000 !important;
+    letter-spacing: 0.5px !important;
+  }
+  #qxz-b-left {
+    width: 38px !important;
+    height: 38px !important;
+    background: #111 !important;
+    color: #bf953f !important;
+    border-radius: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-weight: 900 !important;
+    font-size: 18px !important;
+    transform: rotate(45deg) !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2) !important;
+  }
+  #qxz-b-icon { transform: rotate(-45deg) !important; }
+
+  /* تجاوب إضافي للموبايل */
+  @media (max-width: 480px) {
+    #qxz-text { font-size: 17px !important; }
+    #qxz-btn { width: 48px !important; height: 48px !important; font-size: 22px !important; bottom: 15px !important; left: 15px !important; }
+  }
 </style>
 
 <script>
-(function() {
-    // 1. النصوص (تم إزالة التشكيل تماماً لمنع ظهور الرموز الغريبة)
-    const homeText = "اللهم اجعل هذا العمل شاهدا لي لا علي، واجعله خالصا لوجهك الكريم، وفي ميزان حسناتي وحسنات والدي، وارزقني فيه الاخلاص والقبول، وبارك لي فيه، واجعل كل حرف فيه سببا في رزق واسع لي، واغفر لي به ذنوبي، وارفع به درجاتي، وانفع به عبادك، ولا تجعل فيه رياء ولا سمعة، واجعله صدقة جارية لي ولوالدي يا أرحم الراحمين.";
+// تغليف الجافاسكريبت لضمان تحميل العناصر بالكامل قبل التنفيذ
+document.addEventListener('DOMContentLoaded', function() {
+  
+  var d = document;
+  var w = window;
+  var l = w.location.pathname;
+  var h = (l === '/' || l === '/index.html' || l.length < 2);
+  
+  var m = "اللهم اجعل هذا العمل شاهدا لي لا عليّ، واجعله خالصا لوجهك الكريم، وفي ميزان حسناتي وحسنات والديّ، وارزقني فيه الإخلاص والقبول، وبارك لي فيه، واجعل كل حرف فيه سببا في رزق واسع لي، واغفر لي به ذنوبي، وارفع به درجاتي، وانفع به عبادك، ولا تجعل فيه رياء ولا سمعة، واجعله صدقة جارية لي ولوالديّ يا أرحم الراحمين.";
+  
+  var a = [
+    "اللهم ارزقني رزقا حلالا طيبا مباركا فيه لا تجعل لأحد فيه منّة عليّ.",
+    "اللهم افتح لي أبواب الخير كلها وأغلق عني أبواب الشر كلها.",
+    "اللهم بارك لي في عملي وعلمي ووقتي وصحتي ورزقي.",
+    "اللهم اجعل هذا العمل نورا لي في الدنيا والآخرة وذخرا عندك يوم الحساب.",
+    "اللهم وفقني لما تحب وترضى وجنبني ما تكره وتأبى.",
+    "اللهم ارزقني حسن الخلق والتوفيق وسداد الرأي والحكمة.",
+    "اللهم ارزقني النجاح والفلاح في كل أموري ولا تكلني إلى نفسي طرفة عين.",
+    "اللهم اكفني بحلالك عن حرامك وأغنني بفضلك عمن سواك.",
+    "اللهم يسّر أمري واشرح صدري وحلل عقدة من لساني يفقه الناس قولي.",
+    "اللهم إني أسألك العافية في الدنيا والآخرة.",
+    "اللهم أصلح لي ديني الذي هو عصمة أمري، وأصلح لي دنياي التي فيها معاشي.",
+    "اللهم إني أعوذ بك من الهم والحزن والعجز والكسل والبخل والجبن.",
+    "اللهم اجعلني من الشاكرين لنعمتك الذاكرين لك في كل وقت وحين.",
+    "اللهم ارزقني قلبا خاشعا ولسانا ذاكرا وبدنا على البلاء صابرا.",
+    "اللهم اجعل خير أعمالي خواتيمها وخير أيامي يوم ألقاك.",
+    "اللهم إني أسألك الهدى والتقى والعفاف والغنى.",
+    "اللهم أعني على ذكرك وشكرك وحسن عبادتك.",
+    "اللهم اغفر لي ولوالديّ وللمؤمنين يوم يقوم الحساب.",
+    "اللهم لا تجعل الدنيا أكبر همي ولا مبلغ علمي.",
+    "اللهم ارزقني حب العلم والعمل الصالح وتيسير الأمور."
+  ];
+  
+  var t = [
+    ['#f4fcfc','#008080','#008080','conic-gradient(from 0deg,#008080,#20b2aa,#48d1cc,#afeeee,#48d1cc,#20b2aa,#008080)'],
+    ['#fdf4f6','#c71585','#c71585','conic-gradient(from 0deg,#c71585,#db7093,#ffb6c1,#ffe4e1,#ffb6c1,#db7093,#c71585)'],
+    ['#f4f5f8','#483d8b','#483d8b','conic-gradient(from 0deg,#483d8b,#6a5acd,#7b68ee,#e6e6fa,#7b68ee,#6a5acd,#483d8b)'],
+    ['#f6fdf4','#2e8b57','#2e8b57','conic-gradient(from 0deg,#2e8b57,#3cb371,#8fbc8f,#f0fff0,#8fbc8f,#3cb371,#2e8b57)'],
+    ['#fdfaf4','#b8860b','#b8860b','conic-gradient(from 0deg,#b8860b,#daa520,#f0e68c,#fffacd,#f0e68c,#daa520,#b8860b)']
+  ];
+  
+  // استدعاء العناصر من الصفحة
+  var b = d.getElementById('qxz-btn');
+  var o = d.getElementById('qxz-modal');
+  var s = d.getElementById('qxz-snake');
+  var n = d.getElementById('qxz-content');
+  var q = d.getElementById('qxz-qmark');
+  var x = d.getElementById('qxz-text');
+  var r = d.getElementById('qxz-brand');
+  var i = d.getElementById('qxz-b-icon');
+  var closeBtn = d.getElementById('qxz-close');
 
-    const otherTexts = [
-        "اللهم ارزقني رزقا حلالا طيبا مباركا فيه.",
-        "اللهم افتح لي ابواب الخير والتوفيق.",
-        "اللهم بارك لي في عملي واجعله نفعا للناس.",
-        "اللهم اجعل هذا العمل نورا لي في الدنيا والآخرة.",
-        "اللهم وفقني لما تحب وترضى.",
-        "اللهم ارزقني التوفيق وسداد الرأي.",
-        "اللهم ارزقني النجاح والفلاح في كل اموري."
-    ];
+  if (!b || !o) return; // حماية إضافية في حال عدم وجود العناصر
 
-    const altColors = ["#3498db", "#2ecc71", "#e67e22", "#e91e63", "#9b59b6"];
+  // إعداد الألوان والمحتوى
+  if(h) {
+    x.innerHTML = m;
+    b.className = 'qx-gld-btn';
+    s.className = 'qx-gld-snk';
+    n.style.background = '#fffefa';
+    r.style.borderRightColor = '#bf953f';
+    i.style.color = '#bf953f';
+    q.style.color = '#bf953f';
+  } else {
+    var v = t[Math.floor(Math.random() * t.length)];
+    x.innerHTML = a[Math.floor(Math.random() * a.length)];
+    b.className = 'qx-dyn-btn';
+    s.style.background = v[3];
+    s.style.animation = 'qxzSnakeSpin 3s linear infinite';
+    n.style.background = v[0];
+    r.style.borderRightColor = v[1];
+    i.style.color = v[2];
+    q.style.color = v[1];
+  }
 
-    window.addEventListener("load", function() {
-        const btn = document.getElementById("qx-trigger-btn");
-        const box = document.getElementById("qx-dua-overlay");
-        const txt = document.getElementById("qx-dua-content");
+  // كائن الصوت لتجنب إنشائه مع كل ضغطة
+  var audioCtx = null;
+  
+  var playSound = function(f, y) {
+    try {
+      if (!audioCtx) audioCtx = new (w.AudioContext || w.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      
+      var u = audioCtx.createOscillator();
+      var k = audioCtx.createOscillator();
+      var g = audioCtx.createGain();
+      
+      u.type = 'sine';
+      k.type = 'triangle';
+      u.frequency.value = f;
+      k.frequency.value = y;
+      
+      g.gain.setValueAtTime(0, audioCtx.currentTime);
+      g.gain.linearRampToValueAtTime(0.15, audioCtx.currentTime + 0.05);
+      g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.6);
+      
+      u.connect(g);
+      k.connect(g);
+      g.connect(audioCtx.destination);
+      
+      u.start();
+      k.start();
+      u.stop(audioCtx.currentTime + 0.6);
+      k.stop(audioCtx.currentTime + 0.6);
+    } catch(e) {}
+  };
 
-        if (!btn || !box || !txt) return;
+  // دوال الفتح والإغلاق
+  var openModal = function() {
+    playSound(523.25, 659.25);
+    o.classList.add('qx-show');
+  };
 
-        // 2. فحص الصفحة (الرئيسية vs الداخلية)
-        const isHomePage = window.location.pathname === "/" || window.location.pathname === "/index.html" || window.location.pathname.length <= 1;
+  var closeModal = function() {
+    playSound(329.63, 261.63);
+    o.classList.remove('qx-show');
+  };
 
-        if (isHomePage) {
-            // الصفحة الرئيسية: ذهبي + دعاء ثابت
-            txt.innerHTML = homeText;
-            document.documentElement.style.setProperty("--main-clr", "#bf953f");
-        } else {
-            // الصفحات الداخلية: لون عشوائي + دعاء عشوائي
-            const randomTxt = otherTexts[Math.floor(Math.random() * otherTexts.length)];
-            const randomClr = altColors[Math.floor(Math.random() * altColors.length)];
-            txt.innerHTML = randomTxt;
-            document.documentElement.style.setProperty("--main-clr", randomClr);
-        }
+  // ربط الأحداث بالأزرار
+  b.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  
+  // إغلاق عند الضغط على الخلفية السوداء
+  o.addEventListener('click', function(e) {
+    if (e.target === o) closeModal();
+  });
 
-        // 3. الأوامر
-        btn.onclick = function() { box.style.display = "flex"; };
-        window.closeGoldDua = function() { box.style.display = "none"; };
-        box.onclick = function(e) { if(e.target === box) closeGoldDua(); };
-
-        // 4. نظام السحب (Drag)
-        let isMoving = false, px, py;
-        btn.onmousedown = btn.ontouchstart = function(e) {
-            isMoving = true;
-            let ev = e.touches ? e.touches[0] : e;
-            px = ev.clientX - btn.offsetLeft;
-            py = ev.clientY - btn.offsetTop;
-        };
-        document.onmousemove = document.ontouchmove = function(e) {
-            if (!isMoving) return;
-            let ev = e.touches ? e.touches[0] : e;
-            btn.style.left = (ev.clientX - px) + "px";
-            btn.style.top = (ev.clientY - py) + "px";
-            btn.style.bottom = "auto";
-        };
-        document.onmouseup = document.ontouchend = function() { isMoving = false; };
-    });
-})();
+});
 </script>
