@@ -1,0 +1,164 @@
+<!-- حاوية الذكر المطور - القرماني كاش -->
+<div id="qx-gold-space">
+
+    <!-- الأيقونة المتحركة -->
+    <div id="qx-trigger-btn"> نورتنا ✨</div>
+
+    <!-- النافذة -->
+    <div id="qx-dua-overlay">
+        <div class="qx-dua-card">
+            <div class="qx-close-x" onclick="closeGoldDua()">×</div>
+            <div class="qx-badge-label">رسالة قرمانية</div>
+            <p id="qx-dua-content"></p>
+            <div class="qx-gold-line"></div>
+            <div class="qx-user-name">مؤسس alqurmani  x</div>
+            <div class="qx-user-sub">محمد بسيوني</div>
+        </div>
+    </div>
+
+</div>
+
+<style>
+/* إعدادات الألوان */
+:root { --main-clr: #bf953f; }
+
+#qx-trigger-btn {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    background: var(--main-clr);
+    color: #000;
+    padding: 12px 22px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: grab;
+    z-index: 9999999;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    user-select: none;
+    direction: rtl;
+}
+
+#qx-dua-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 99999999;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+
+.qx-dua-card {
+    background: #0a0a0a;
+    border: 2px solid var(--main-clr);
+    padding: 40px 25px;
+    max-width: 500px;
+    width: 85%;
+    text-align: center;
+    color: #fff;
+    border-radius: 20px;
+    position: relative;
+    direction: rtl;
+}
+
+.qx-badge-label {
+    background: var(--main-clr);
+    color: #000;
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+#qx-dua-content {
+    font-size: 19px;
+    line-height: 1.7;
+    color: #eee;
+    margin: 15px 0;
+}
+
+.qx-gold-line {
+    width: 60px;
+    height: 3px;
+    background: var(--main-clr);
+    margin: 20px auto;
+}
+
+.qx-user-name { font-size: 22px; font-weight: bold; }
+.qx-user-sub { color: var(--main-clr); margin-top: 5px; }
+
+.qx-close-x {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    color: var(--main-clr);
+    font-size: 35px;
+    cursor: pointer;
+}
+</style>
+
+<script>
+(function() {
+    // 1. النصوص (تم إزالة التشكيل تماماً لمنع ظهور الرموز الغريبة)
+    const homeText = "اللهم اجعل هذا العمل شاهدا لي لا علي، واجعله خالصا لوجهك الكريم، وفي ميزان حسناتي وحسنات والدي، وارزقني فيه الاخلاص والقبول، وبارك لي فيه، واجعل كل حرف فيه سببا في رزق واسع لي، واغفر لي به ذنوبي، وارفع به درجاتي، وانفع به عبادك، ولا تجعل فيه رياء ولا سمعة، واجعله صدقة جارية لي ولوالدي يا أرحم الراحمين.";
+
+    const otherTexts = [
+        "اللهم ارزقني رزقا حلالا طيبا مباركا فيه.",
+        "اللهم افتح لي ابواب الخير والتوفيق.",
+        "اللهم بارك لي في عملي واجعله نفعا للناس.",
+        "اللهم اجعل هذا العمل نورا لي في الدنيا والآخرة.",
+        "اللهم وفقني لما تحب وترضى.",
+        "اللهم ارزقني التوفيق وسداد الرأي.",
+        "اللهم ارزقني النجاح والفلاح في كل اموري."
+    ];
+
+    const altColors = ["#3498db", "#2ecc71", "#e67e22", "#e91e63", "#9b59b6"];
+
+    window.addEventListener("load", function() {
+        const btn = document.getElementById("qx-trigger-btn");
+        const box = document.getElementById("qx-dua-overlay");
+        const txt = document.getElementById("qx-dua-content");
+
+        if (!btn || !box || !txt) return;
+
+        // 2. فحص الصفحة (الرئيسية vs الداخلية)
+        const isHomePage = window.location.pathname === "/" || window.location.pathname === "/index.html" || window.location.pathname.length <= 1;
+
+        if (isHomePage) {
+            // الصفحة الرئيسية: ذهبي + دعاء ثابت
+            txt.innerHTML = homeText;
+            document.documentElement.style.setProperty("--main-clr", "#bf953f");
+        } else {
+            // الصفحات الداخلية: لون عشوائي + دعاء عشوائي
+            const randomTxt = otherTexts[Math.floor(Math.random() * otherTexts.length)];
+            const randomClr = altColors[Math.floor(Math.random() * altColors.length)];
+            txt.innerHTML = randomTxt;
+            document.documentElement.style.setProperty("--main-clr", randomClr);
+        }
+
+        // 3. الأوامر
+        btn.onclick = function() { box.style.display = "flex"; };
+        window.closeGoldDua = function() { box.style.display = "none"; };
+        box.onclick = function(e) { if(e.target === box) closeGoldDua(); };
+
+        // 4. نظام السحب (Drag)
+        let isMoving = false, px, py;
+        btn.onmousedown = btn.ontouchstart = function(e) {
+            isMoving = true;
+            let ev = e.touches ? e.touches[0] : e;
+            px = ev.clientX - btn.offsetLeft;
+            py = ev.clientY - btn.offsetTop;
+        };
+        document.onmousemove = document.ontouchmove = function(e) {
+            if (!isMoving) return;
+            let ev = e.touches ? e.touches[0] : e;
+            btn.style.left = (ev.clientX - px) + "px";
+            btn.style.top = (ev.clientY - py) + "px";
+            btn.style.bottom = "auto";
+        };
+        document.onmouseup = document.ontouchend = function() { isMoving = false; };
+    });
+})();
+</script>
