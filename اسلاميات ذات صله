@@ -1,0 +1,54 @@
+<div class="luxury-wrapper">
+  <div class="luxury-title">قد يهمك أيضاً في رحاب الإسلام</div>
+  <div id="aqx-luxury-feed" class="luxury-grid">
+    <div class="luxury-loader">جاري تهيئة المحتوى...</div>
+  </div>
+</div>
+
+<style>
+  .luxury-wrapper { margin: 40px auto; font-family: 'Cairo', sans-serif; }
+  .luxury-title { 
+    font-size: 24px; font-weight: 800; color: #2c3e50; 
+    margin-bottom: 25px; text-align: center; 
+    letter-spacing: -0.5px; position: relative;
+  }
+  .luxury-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .luxury-card { 
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(220, 220, 220, 0.5);
+    border-radius: 20px; padding: 25px;
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    overflow: hidden; cursor: pointer;
+  }
+  .luxury-card:hover { 
+    border-color: #d4af37; /* لون ذهبي خفيف */
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
+    transform: translateY(-8px);
+  }
+  .luxury-card h3 { font-size: 16px; color: #34495e; line-height: 1.6; margin: 0; }
+  .luxury-loader { text-align: center; color: #95a5a6; font-size: 14px; }
+</style>
+
+<script type="text/javascript">
+(function() {
+  const label = "إسلاميات"; 
+  const container = document.getElementById('aqx-luxury-feed');
+
+  window.renderLuxury = function(data) {
+    const entries = data.feed.entry || [];
+    const filtered = entries.filter(e => e.link.find(l => l.rel === 'alternate').href !== window.location.href);
+    const selected = filtered.sort(() => 0.5 - Math.random()).slice(0, 2);
+    
+    container.innerHTML = selected.map(post => `
+      <div class="luxury-card" onclick="window.location='${post.link.find(l => l.rel === 'alternate').href}'">
+        <h3>${post.title.$t}</h3>
+      </div>
+    `).join('');
+  };
+
+  const script = document.createElement('script');
+  script.src = '/feeds/posts/default/-/' + encodeURIComponent(label) + '?alt=json-in-script&callback=renderLuxury&max-results=10';
+  document.body.appendChild(script);
+})();
+</script>
