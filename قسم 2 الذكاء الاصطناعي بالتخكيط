@@ -1,0 +1,668 @@
+<!-- بداية كود قسم الذكاء الاصطناعي والبوابة الفخمة - القرماني إكس AQX -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800&display=swap');
+
+/* تنسيقات الأداة الرئيسية (الأقسام) */
+.qarmani-ai-widget {
+    font-family: 'Tajawal', sans-serif;
+    direction: rtl;
+    background: #ffffff;
+    padding: 40px 25px;
+    border-radius: 24px;
+    box-shadow: 0 15px 50px rgba(99, 102, 241, 0.08);
+    max-width: 100%;
+    margin: 20px auto;
+    border: 1px solid #f1f0f7;
+}
+
+.qarmani-ai-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 800;
+    color: #4f46e5;
+    margin-bottom: 45px;
+    position: relative;
+    display: block;
+    text-shadow: 0 2px 4px rgba(79, 70, 229, 0.1);
+}
+
+.qarmani-ai-title::after {
+    content: '';
+    width: 100px;
+    height: 6px;
+    background: linear-gradient(90deg, #818cf8, #c084fc, #e879f9);
+    display: block;
+    margin: 15px auto 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(192, 132, 252, 0.4);
+}
+
+.qarmani-ai-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.qarmani-ai-node {
+    display: flex;
+    align-items: center;
+    padding: 18px 16px;
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 16px;
+    text-decoration: none;
+    color: #1e293b;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.qarmani-ai-node::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(129, 140, 248, 0.08) 0%, rgba(192, 132, 252, 0.12) 100%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.qarmani-ai-node:hover {
+    background: #ffffff;
+    border-color: #a855f7;
+    transform: translateY(-6px);
+    box-shadow: 0 15px 25px rgba(168, 85, 247, 0.15);
+}
+
+.qarmani-ai-node:hover::before {
+    opacity: 1;
+}
+
+.qarmani-ai-icon {
+    font-size: 26px;
+    margin-left: 15px;
+    transition: all 0.4s ease;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08));
+}
+
+.qarmani-ai-node:hover .qarmani-ai-icon {
+    transform: scale(1.25) rotate(5deg);
+    filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.5));
+}
+
+.qarmani-ai-name {
+    font-size: 15px;
+    font-weight: 800;
+    transition: color 0.3s ease;
+    line-height: 1.4;
+}
+
+.qarmani-ai-node:hover .qarmani-ai-name {
+    color: #6366f1;
+}
+
+/* ========================================= */
+/* بوابة الذكاء الاصطناعي الفخمة (AI Gateway) */
+/* ========================================= */
+
+@keyframes aqxAiTechGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.aqx-ai-luxury-gateway {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* لون تكنولوجي شيك: بنفسجي ونيون متوسط السطوع */
+    background: linear-gradient(-45deg, rgba(99, 102, 241, 0.9), rgba(168, 85, 247, 0.88), rgba(139, 92, 246, 0.9), rgba(217, 70, 239, 0.88));
+    background-size: 400% 400%;
+    animation: aqxAiTechGradient 15s ease infinite;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    direction: rtl;
+    font-family: 'Tajawal', sans-serif;
+}
+
+.aqx-ai-luxury-gateway.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* صندوق البوابة - فخامة متناهية */
+.aqx-ai-gateway-content {
+    background: rgba(255, 255, 255, 0.98);
+    width: 92%;
+    max-width: 480px;
+    padding: 45px 35px;
+    border-radius: 30px;
+    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.25), 
+                0 0 50px rgba(168, 85, 247, 0.5), 
+                inset 0 0 20px rgba(255, 255, 255, 1);
+    text-align: center;
+    position: relative;
+    transform: translateY(60px) scale(0.85);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+}
+
+.aqx-ai-luxury-gateway.active .aqx-ai-gateway-content {
+    transform: translateY(0) scale(1);
+}
+
+/* زر الإغلاق الدوار والمتغير الألوان */
+@keyframes aqxAiCloseSpin {
+    0% { color: #f43f5e; transform: rotate(0deg); }
+    50% { color: #fb7185; transform: rotate(180deg); }
+    100% { color: #f43f5e; transform: rotate(360deg); }
+}
+
+.aqx-ai-close-btn {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 45px;
+    height: 45px;
+    background: #ffffff;
+    border: 2px solid #f43f5e;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #f43f5e;
+    box-shadow: 0 5px 15px rgba(244, 63, 94, 0.3);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    z-index: 10;
+}
+
+.aqx-ai-close-btn:hover {
+    animation: aqxAiCloseSpin 0.5s ease;
+    background: #f43f5e;
+    color: #ffffff;
+    box-shadow: 0 8px 25px rgba(244, 63, 94, 0.5);
+}
+
+.aqx-ai-gateway-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: #1e1b4b;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+}
+
+.aqx-ai-gateway-desc {
+    font-size: 16px;
+    font-weight: 700;
+    color: #64748b;
+    margin-bottom: 30px;
+    line-height: 1.7;
+    padding: 0 10px;
+}
+
+/* إطار الإعلان بنبضات النيون البنفسجية */
+@keyframes aqxAiNeonPulse {
+    0% { box-shadow: 0 0 10px rgba(192, 132, 252, 0.3); }
+    50% { box-shadow: 0 0 25px rgba(168, 85, 247, 0.6); }
+    100% { box-shadow: 0 0 10px rgba(192, 132, 252, 0.3); }
+}
+
+.aqx-ai-ad-container {
+    width: 300px;
+    height: 250px;
+    margin: 0 auto 30px;
+    background: #f8fafc;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: aqxAiNeonPulse 2.5s infinite;
+    border: 2px solid transparent;
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+    background-image: linear-gradient(#f8fafc, #f8fafc), linear-gradient(135deg, #818cf8, #d946ef);
+}
+
+/* مؤقت زمني أنيق */
+.aqx-ai-gateway-timer {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 25px;
+    background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+    padding: 12px 25px;
+    border-radius: 50px;
+    display: inline-block;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.aqx-ai-gateway-timer span {
+    color: #8b5cf6;
+    font-size: 24px;
+    font-weight: 900;
+    margin: 0 8px;
+    text-shadow: 0 2px 10px rgba(139, 92, 246, 0.3);
+}
+
+/* زر الدخول - تأثير فخم ومستقبلي */
+.aqx-ai-enter-btn {
+    display: block;
+    width: 100%;
+    padding: 16px 0;
+    background: linear-gradient(135deg, #6366f1, #a855f7, #d946ef);
+    background-size: 200% auto;
+    color: #ffffff;
+    border: none;
+    border-radius: 16px;
+    font-size: 20px;
+    font-weight: 800;
+    font-family: 'Tajawal', sans-serif;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 25px rgba(168, 85, 247, 0.35);
+    outline: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.aqx-ai-enter-btn:hover {
+    background-position: right center;
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(168, 85, 247, 0.5);
+}
+
+@media (max-width: 480px) {
+    .aqx-ai-gateway-content {
+        padding: 40px 20px 30px;
+        width: 95%;
+    }
+    .aqx-ai-ad-container {
+        transform: scale(0.95);
+        margin-bottom: 20px;
+    }
+    .aqx-ai-close-btn {
+        top: -10px;
+        right: -10px;
+    }
+}
+</style>
+
+<!-- هيكل الأقسام الـ 48 كاملة بدون أي اختصار -->
+<div class="qarmani-ai-widget">
+    <h2 class="qarmani-ai-title">قسم الذكاء الاصطناعي</h2>
+    <div class="qarmani-ai-grid">
+        
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'أخبار الذكاء الاصطناعي', 'تابع أحدث التطورات، الابتكارات، والأخبار الحصرية في عالم الذكاء الاصطناعي لحظة بلحظة.')">
+            <span class="qarmani-ai-icon">📰</span>
+            <span class="qarmani-ai-name">أخبار الذكاء الاصطناعي</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'أدوات الذكاء الاصطناعي', 'اكتشف أقوى وأحدث الأدوات التي تعتمد على الذكاء الاصطناعي لتسهيل مهامك اليومية والعملية.')">
+            <span class="qarmani-ai-icon">🧰</span>
+            <span class="qarmani-ai-name">أدوات الذكاء الاصطناعي</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'شروحات AI للمبتدئين', 'دليلك الشامل لتعلم أساسيات الذكاء الاصطناعي من الصفر وحتى الاحتراف بأسلوب مبسط وممتع.')">
+            <span class="qarmani-ai-icon">🔰</span>
+            <span class="qarmani-ai-name">شروحات AI للمبتدئين</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'الذكاء الاصطناعي المتقدم', 'تقنيات ومفاهيم متقدمة للمحترفين والمطورين للغوص في أعماق هندسة الذكاء الاصطناعي.')">
+            <span class="qarmani-ai-icon">⚡</span>
+            <span class="qarmani-ai-name">الذكاء الاصطناعي المتقدم</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'تعلم الآلة', 'تعرف على كيفية تدريب الآلات واتخاذ القرارات بناءً على البيانات والخوارزميات الدقيقة.')">
+            <span class="qarmani-ai-icon">🤖</span>
+            <span class="qarmani-ai-name">تعلم الآلة (Machine Learning)</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'التعلم العميق', 'استكشف أعماق الشبكات العصبية وطرق محاكاة العقل البشري لحل المشكلات المعقدة للغاية.')">
+            <span class="qarmani-ai-icon">🧠</span>
+            <span class="qarmani-ai-name">التعلم العميق (Deep Learning)</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'الشبكات العصبية', 'شروحات تفصيلية لبنية وآلية عمل الشبكات العصبية الاصطناعية وتطبيقاتها المستقبلية.')">
+            <span class="qarmani-ai-icon">🕸️</span>
+            <span class="qarmani-ai-name">الشبكات العصبية</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'معالجة اللغة الطبيعية', 'كيف تفهم الحواسيب لغة البشر؟ تعرف على تقنيات التفاعل وتحليل النصوص والصوتيات باحتراف.')">
+            <span class="qarmani-ai-icon">🗣️</span>
+            <span class="qarmani-ai-name">معالجة اللغة الطبيعية (NLP)</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'الرؤية الحاسوبية', 'تقنيات الذكاء الاصطناعي في تحليل الصور والفيديوهات للتعرف على الأنماط والأشياء بدقة عالية.')">
+            <span class="qarmani-ai-icon">👁️</span>
+            <span class="qarmani-ai-name">الرؤية الحاسوبية (Computer Vision)</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'الذكاء الاصطناعي التوليدي', 'الإبداع الآلي وكيفية توليد نصوص وصور وفيديوهات احترافية من الصفر باستخدام الذكاء.')">
+            <span class="qarmani-ai-icon">🌌</span>
+            <span class="qarmani-ai-name">الذكاء الاصطناعي التوليدي</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'روبوتات الدردشة AI', 'تعلم بناء وتطوير روبوتات المحادثة الذكية لخدمة العملاء، الرد الآلي، والترفيه التفاعلي.')">
+            <span class="qarmani-ai-icon">💬</span>
+            <span class="qarmani-ai-name">روبوتات الدردشة AI</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'هندسة الأوامر', 'احترف فن صياغة الأوامر (Prompts) للحصول على أفضل النتائج الدقيقة من نماذج الذكاء الاصطناعي.')">
+            <span class="qarmani-ai-icon">⌨️</span>
+            <span class="qarmani-ai-name">هندسة الأوامر (Prompt Engineering)</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'أتمتة الأعمال', 'خطوات تحويل المهام الروتينية إلى عمليات آلية ذكية لزيادة الإنتاجية وتوفير الوقت والجهد.')">
+            <span class="qarmani-ai-icon">🔄</span>
+            <span class="qarmani-ai-name">أتمتة الأعمال بالذكاء الاصطناعي</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'الذكاء الاصطناعي في التسويق', 'استراتيجيات التسويق الحديثة المعتمدة على تحليل البيانات الدقيقة واستهداف العملاء بذكاء.')">
+            <span class="qarmani-ai-icon">🎯</span>
+            <span class="qarmani-ai-name">الذكاء الاصطناعي في التسويق</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'الذكاء الاصطناعي في التعليم', 'مستقبل التعلم الذكي وأدوات تخصيص المناهج لرفع كفاءة الطلاب وتسهيل عملية التدريس.')">
+            <span class="qarmani-ai-icon">🎓</span>
+            <span class="qarmani-ai-name">الذكاء الاصطناعي في التعليم</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'الذكاء الاصطناعي في الطب', 'أحدث الثورات الطبية، التشخيص الذكي للأمراض، وتطوير الأدوية باستخدام قوة الذكاء الاصطناعي.')">
+            <span class="qarmani-ai-icon">🩺</span>
+            <span class="qarmani-ai-name">الذكاء الاصطناعي في الطب</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'الأمن السيبراني بـ AI', 'حماية الأنظمة واكتشاف الثغرات الأمنية والهجمات الاستباقية باستخدام خوارزميات الذكاء المتقدمة.')">
+            <span class="qarmani-ai-icon">🛡️</span>
+            <span class="qarmani-ai-name">الذكاء الاصطناعي في الأمن السيبراني</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'التجارة الإلكترونية', 'تحسين تجربة تسوق المستخدم وزيادة المبيعات عبر التوصيات الذكية وتحليل سلوك المستهلك.')">
+            <span class="qarmani-ai-icon">🛍️</span>
+            <span class="qarmani-ai-name">الذكاء الاصطناعي في التجارة الإلكترونية</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'التصميم والجرافيك', 'تصميم واجهات، شعارات، ورسومات احترافية في ثوانٍ باستخدام أحدث أدوات الذكاء التوليدي.')">
+            <span class="qarmani-ai-icon">🎨</span>
+            <span class="qarmani-ai-name">الذكاء الاصطناعي في التصميم والجرافيك</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'صناعة المحتوى', 'توليد الأفكار الإبداعية، كتابة المقالات، وتطوير المحتوى الرقمي المتميز بضغطة زر.')">
+            <span class="qarmani-ai-icon">✍️</span>
+            <span class="qarmani-ai-name">الذكاء الاصطناعي وصناعة المحتوى</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'برمجة تطبيقات AI', 'خطوات وشروحات عملية لبناء تطبيقات ذكية تدمج قدرات الذكاء الاصطناعي لخدمة المستخدمين.')">
+            <span class="qarmani-ai-icon">💻</span>
+            <span class="qarmani-ai-name">برمجة تطبيقات AI</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'واجهات API للذكاء', 'كيفية ربط واستخدام واجهات برمجة التطبيقات (API) لأشهر النماذج الذكية في مشاريعك الخاصة.')">
+            <span class="qarmani-ai-icon">🔌</span>
+            <span class="qarmani-ai-name">واجهات API ونماذج الذكاء الاصطناعي</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'مقارنة أدوات AI', 'مراجعات ومقارنات شاملة وحيادية لاختيار الأداة الذكية الأنسب لاحتياجاتك وميزانيتك.')">
+            <span class="qarmani-ai-icon">⚖️</span>
+            <span class="qarmani-ai-name">مقارنة أدوات الذكاء الاصطناعي</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'مراجعات وتجارب', 'تجارب حية وتقييمات دقيقة لأحدث أدوات وتقنيات الذكاء الاصطناعي لمعرفة مدى فاعليتها.')">
+            <span class="qarmani-ai-icon">🧪</span>
+            <span class="qarmani-ai-name">مراجعات وتجارب AI</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'مواقع وتطبيقات AI', 'دليل شامل ومنظم لأهم المواقع والتطبيقات الذكية في مختلف المجالات العملية والترفيهية.')">
+            <span class="qarmani-ai-icon">🌐</span>
+            <span class="qarmani-ai-name">موقع وتطبيقات AI</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'توليد الصور والفيديو', 'أدوات وتقنيات إنشاء محتوى مرئي سينمائي ومذهل بنقرة زر باستخدام خوارزميات التوليد.')">
+            <span class="qarmani-ai-icon">🎬</span>
+            <span class="qarmani-ai-name">توليد الصور والفيديو بالذكاء الاصطناعي</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'تحويل النص إلى صوت', 'أحدث تقنيات التعرف على الصوت وتوليد الأصوات البشرية والتعليق الصوتي بدقة وواقعية عالية.')">
+            <span class="qarmani-ai-icon">🎙️</span>
+            <span class="qarmani-ai-name">تحويل النص إلى صوت والعكس</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'AI مفتوح المصدر', 'استكشاف النماذج والأدوات المجانية ومفتوحة المصدر للمطورين لبناء مشاريعهم بحرية كاملة.')">
+            <span class="qarmani-ai-icon">🔓</span>
+            <span class="qarmani-ai-name">الذكاء الاصطناعي مفتوح المصدر</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'الشركات الرائدة', 'متابعة أخبار وابتكارات عمالقة التكنولوجيا والشركات الناشئة التي تقود ثورة الذكاء الاصطناعي.')">
+            <span class="qarmani-ai-icon">🏢</span>
+            <span class="qarmani-ai-name">الشركات الرائدة في AI</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'الوظائف والربح', 'كيف تستثمر مهاراتك في أدوات الذكاء الاصطناعي لتحقيق دخل مادي وبناء مسار مهني واعد.')">
+            <span class="qarmani-ai-icon">💵</span>
+            <span class="qarmani-ai-name">الوظائف والربح من AI</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'مشاريع وأفكار AI', 'أفكار مبتكرة ومشاريع عملية قابلة للتنفيذ والاستثمار في عالم الذكاء الاصطناعي المتطور.')">
+            <span class="qarmani-ai-icon">💡</span>
+            <span class="qarmani-ai-name">مشاريع وأفكار AI</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'دورات وكورسات AI', 'أفضل المصادر التعليمية المجانية والمدفوعة لتطوير مهاراتك واحتراف مجالات الذكاء الاصطناعي.')">
+            <span class="qarmani-ai-icon">📚</span>
+            <span class="qarmani-ai-name">دورات وكورسات AI</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'أخلاقيات التكنولوجيا', 'تحديات الذكاء الاصطناعي، التحيز الخوارزمي، ومستقبل العلاقة والقوانين بين البشر والآلة.')">
+            <span class="qarmani-ai-icon">📜</span>
+            <span class="qarmani-ai-name">أخلاقيات الذكاء الاصطناعي</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'مستقبل الذكاء الاصطناعي', 'رؤى وتوقعات مدروسة حول ما سيبدو عليه العالم في ظل التطور التكنولوجي المتسارع والذكي.')">
+            <span class="qarmani-ai-icon">🔮</span>
+            <span class="qarmani-ai-name">مستقبل الذكاء الاصطناعي</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'الذكاء والروبوتات', 'دمج تقنيات الذكاء الاصطناعي مع الأجهزة المادية لتطوير روبوتات مستقلة قادرة على التفكير.')">
+            <span class="qarmani-ai-icon">🤖</span>
+            <span class="qarmani-ai-name">الذكاء الاصطناعي والروبوتات</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'البيانات الضخمة', 'استخراج الرؤى القيمة واتخاذ القرارات الإستراتيجية من كميات هائلة من البيانات باستخدام AI.')">
+            <span class="qarmani-ai-icon">📊</span>
+            <span class="qarmani-ai-name">تحليل البيانات والبيانات الضخمة</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'الأمن وحماية النماذج', 'تأمين خوارزميات ونماذج الذكاء الاصطناعي من الهجمات العكسية، الاختراقات، والتلاعب بالبيانات.')">
+            <span class="qarmani-ai-icon">🔒</span>
+            <span class="qarmani-ai-name">الأمن وحماية نماذج AI</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'النماذج اللغوية الكبيرة', 'نظرة عميقة تقنية على النماذج اللغوية الضخمة مثل GPT و Claude وكيفية عملها وتطويرها.')">
+            <span class="qarmani-ai-icon">📝</span>
+            <span class="qarmani-ai-name">نماذج اللغة الكبيرة (LLMs)</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'الوكلاء الذكيين', 'بناء وتطوير وكلاء ذكاء اصطناعي (AI Agents) قادرين على التخطيط الذاتي وتنفيذ المهام المعقدة.')">
+            <span class="qarmani-ai-icon">👥</span>
+            <span class="qarmani-ai-name">تطوير الوكلاء الذكيين (AI Agents)</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'الذكاء الاصطناعي العربي', 'تطور النماذج والأدوات الداعمة للغة العربية وتطبيقاتها المحلية التي تخدم المستخدم العربي.')">
+            <span class="qarmani-ai-icon">🗺️</span>
+            <span class="qarmani-ai-name">الذكاء الاصطناعي العربي</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'أدوات مجانية لـ AI', 'قائمة متجددة بأفضل الأدوات الذكية المتاحة للاستخدام المفتوح والمجاني بدون تكاليف إضافية.')">
+            <span class="qarmani-ai-icon">🆓</span>
+            <span class="qarmani-ai-name">أدوات مجانية للذكاء الاصطناعي</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'AI للموبايل', 'استعراض التطبيقات وتقنيات الذكاء الاصطناعي المدمجة والمخصصة لتعزيز تجربة الهواتف الذكية.')">
+            <span class="qarmani-ai-icon">📱</span>
+            <span class="qarmani-ai-name">ذكاء اصطناعي للموبايل</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'AI للمبرمجين', 'كيف يستخدم المطورون والمبرمجون أدوات الذكاء الاصطناعي لكتابة وتصحيح واختبار الأكواد بسرعة.')">
+            <span class="qarmani-ai-icon">👨‍💻</span>
+            <span class="qarmani-ai-name">AI للمبرمجين</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'AI لليوتيوبرز وصناع المحتوى', 'أدوات ذكية لتعديل الفيديوهات، تحسين دقة الصوت، إنشاء الصور المصغرة، وتصدر نتائج البحث.')">
+            <span class="qarmani-ai-icon">🎥</span>
+            <span class="qarmani-ai-name">AI لليوتيوبرز وصناع المحتوى</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'تجارب ومختبرات', 'مساحة علمية لاستكشاف النماذج التجريبية، أحدث المشاريع قيد التطوير، والأبحاث المستقبلية.')">
+            <span class="qarmani-ai-icon">🔬</span>
+            <span class="qarmani-ai-name">تجارب ومختبرات AI</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'الشركات والاستثمارات', 'متابعة شاملة لصفقات التمويل، الاستحواذات، وحركة الاستثمار المالي في سوق الذكاء الاصطناعي.')">
+            <span class="qarmani-ai-icon">📈</span>
+            <span class="qarmani-ai-name">أخبار الشركات والاستثمارات في AI</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'مكتبة الملفات', 'تجميعة حصرية وشاملة لأهم الملفات، الأكواد، والأدوات التي يحتاجها كل مهتم ومطور في المجال.')">
+            <span class="qarmani-ai-icon">📁</span>
+            <span class="qarmani-ai-name">مكتبة أدوات وملفات AI</span>
+        </a>
+
+        <a href="#" class="qarmani-ai-node" onclick="aqxOpenAiGateway(event, 'مجتمع الذكاء الاصطناعي', 'تواصل مع الخبراء والمهتمين لتبادل الآراء، طرح الاستفسارات، ومشاركة الخبرات التقنية الحديثة.')">
+            <span class="qarmani-ai-icon">🗣️</span>
+            <span class="qarmani-ai-name">مجتمع ونقاشات الذكاء الاصطناعي</span>
+        </a>
+
+    </div>
+</div>
+
+<!-- هيكل البوابة الفخمة للذكاء الاصطناعي (مخفية افتراضياً) -->
+<div id="aqx-ai-luxury-gateway" class="aqx-ai-luxury-gateway">
+    <div class="aqx-ai-gateway-content">
+        <button class="aqx-ai-close-btn" onclick="aqxCloseAiGateway()" title="إلغاء وإغلاق">✖</button>
+        <h3 id="aqx-ai-gateway-title" class="aqx-ai-gateway-title"></h3>
+        <p id="aqx-ai-gateway-desc" class="aqx-ai-gateway-desc"></p>
+        
+        <!-- مساحة الإعلان المخصصة (يتم حقن الإعلان هنا برمجياً) -->
+        <div id="aqx-ai-ad-container-inner" class="aqx-ai-ad-container">
+            <!-- سيتم تحميل الإعلان هنا تلقائياً لضمان ظهوره 100% -->
+        </div>
+
+        <div class="aqx-ai-gateway-timer">سيتم التحويل تلقائياً بعد <span id="aqx-ai-timer-count">15</span> ثانية</div>
+        <button id="aqx-ai-enter-btn" class="aqx-ai-enter-btn" onclick="aqxEnterAiNow()">الدخول الآن مباشرة</button>
+    </div>
+</div>
+
+<!-- السكريبت التشغيلي الخاص ببوابة الذكاء الاصطناعي -->
+<script>
+let aqxAiTimerInterval;
+let aqxAiTargetUrl = '#';
+
+// دالة العبقرية لحقن الإعلان وضمان ظهوره
+function loadAqxAiAdSecurely() {
+    const adContainer = document.getElementById('aqx-ai-ad-container-inner');
+    adContainer.innerHTML = ''; // تنظيف أي إعلان سابق
+    
+    // إنشاء إطار (Iframe) حي لحقن الإعلان بداخله
+    const iframe = document.createElement('iframe');
+    iframe.width = "300";
+    iframe.height = "250";
+    iframe.frameBorder = "0";
+    iframe.scrolling = "no";
+    iframe.style.border = "none";
+    iframe.style.overflow = "hidden";
+    iframe.style.background = "transparent";
+    adContainer.appendChild(iframe);
+
+    // كتابة كود الإعلان داخل الإطار مباشرة
+    const iframeDoc = iframe.contentWindow.document;
+    iframeDoc.open();
+    iframeDoc.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <style>
+                body { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; background: transparent; }
+            </style>
+        </head>
+        <body>
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '6e875cc37b483ebcf03c1a3b504e2982',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                };
+            <\/script>
+            <script type="text/javascript" src="https://www.highperformanceformat.com/6e875cc37b483ebcf03c1a3b504e2982/invoke.js"><\/script>
+        </body>
+        </html>
+    `);
+    iframeDoc.close();
+}
+
+function aqxOpenAiGateway(event, sectionName, sectionDesc) {
+    event.preventDefault(); // إيقاف الانتقال الفوري
+    aqxAiTargetUrl = event.currentTarget.getAttribute('href'); 
+
+    // تحديث النصوص بحروف نقية بدون تنوين لمنع مشكلة الهاشتاج
+    document.getElementById('aqx-ai-gateway-title').innerHTML = 'مرحبا بك في قسم ' + sectionName;
+    document.getElementById('aqx-ai-gateway-desc').innerHTML = sectionDesc;
+
+    // إظهار البوابة الفخمة
+    const gateway = document.getElementById('aqx-ai-luxury-gateway');
+    gateway.classList.add('active');
+
+    // استدعاء دالة الإعلان فور ظهور البوابة
+    loadAqxAiAdSecurely();
+
+    // تشغيل المؤقت الزمني لـ 15 ثانية
+    let timeLeft = 15;
+    const timerSpan = document.getElementById('aqx-ai-timer-count');
+    timerSpan.innerText = timeLeft;
+
+    clearInterval(aqxAiTimerInterval);
+    aqxAiTimerInterval = setInterval(() => {
+        timeLeft--;
+        timerSpan.innerText = timeLeft;
+        
+        if (timeLeft <= 0) {
+            clearInterval(aqxAiTimerInterval);
+            window.location.href = aqxAiTargetUrl;
+        }
+    }, 1000);
+}
+
+function aqxCloseAiGateway() {
+    clearInterval(aqxAiTimerInterval);
+    document.getElementById('aqx-ai-luxury-gateway').classList.remove('active');
+    document.getElementById('aqx-ai-ad-container-inner').innerHTML = ''; // إيقاف الإعلان لتخفيف الحمل
+}
+
+function aqxEnterAiNow() {
+    clearInterval(aqxAiTimerInterval);
+    window.location.href = aqxAiTargetUrl;
+}
+</script>
+<!-- نهاية الكود -->
