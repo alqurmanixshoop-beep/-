@@ -1,0 +1,523 @@
+<!-- بداية كود أقسام التقنية والبوابة الفخمة المحدثة - القرماني إكس AQX -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap');
+
+/* تنسيقات الأداة الرئيسية (الأقسام) */
+.qarmani-tech-widget {
+    font-family: 'Tajawal', sans-serif;
+    direction: rtl;
+    background: #ffffff;
+    padding: 40px 25px;
+    border-radius: 24px;
+    box-shadow: 0 15px 50px rgba(13, 110, 253, 0.08);
+    max-width: 100%;
+    margin: 0 auto;
+    border: 1px solid #e2e8f0;
+}
+
+.qarmani-tech-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 45px;
+    position: relative;
+    display: block;
+}
+
+.qarmani-tech-title::after {
+    content: '';
+    width: 100px;
+    height: 6px;
+    background: linear-gradient(90deg, #0d6efd, #0dcaf0);
+    display: block;
+    margin: 15px auto 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(13, 202, 240, 0.4);
+}
+
+.qarmani-tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+}
+
+.qarmani-tech-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 15px;
+    background: #f8fafc;
+    border: 2px solid #edf2f7;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #475569;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.qarmani-tech-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(13,110,253,0.05) 0%, rgba(13,202,240,0.1) 100%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.qarmani-tech-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 30px rgba(13, 110, 253, 0.12);
+    border-color: #0d6efd;
+    background: #ffffff;
+}
+
+.qarmani-tech-card:hover::before {
+    opacity: 1;
+}
+
+.qarmani-tech-icon {
+    font-size: 42px;
+    margin-bottom: 15px;
+    transition: transform 0.4s ease;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+}
+
+.qarmani-tech-card:hover .qarmani-tech-icon {
+    transform: scale(1.2) translateY(-5px);
+}
+
+.qarmani-tech-name {
+    font-size: 16px;
+    font-weight: 800;
+    text-align: center;
+    line-height: 1.5;
+    transition: color 0.3s ease;
+}
+
+.qarmani-tech-card:hover .qarmani-tech-name {
+    color: #0d6efd;
+}
+
+/* ========================================= */
+/* البوابة الفخمة جداً (Luxury Gateway)      */
+/* ========================================= */
+
+/* تأثير الحركة للخلفية التقنية */
+@keyframes aqxTechGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.aqx-luxury-gateway {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* لون تقني شيك متحرك: أزرق ملكي مع سماوي نيون - ليس غامقاً وليس فاتحاً */
+    background: linear-gradient(-45deg, rgba(10, 88, 202, 0.9), rgba(0, 180, 216, 0.85), rgba(72, 149, 239, 0.9), rgba(67, 97, 238, 0.85));
+    background-size: 400% 400%;
+    animation: aqxTechGradient 15s ease infinite;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    direction: rtl;
+    font-family: 'Tajawal', sans-serif;
+}
+
+.aqx-luxury-gateway.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* صندوق البوابة - فخامة الزجاج المضيء */
+.aqx-gateway-content {
+    background: rgba(255, 255, 255, 0.97);
+    width: 92%;
+    max-width: 480px;
+    padding: 45px 35px;
+    border-radius: 30px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2), 
+                0 0 40px rgba(0, 210, 255, 0.4), 
+                inset 0 0 20px rgba(255, 255, 255, 1);
+    text-align: center;
+    position: relative;
+    transform: translateY(60px) scale(0.85);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.aqx-luxury-gateway.active .aqx-gateway-content {
+    transform: translateY(0) scale(1);
+}
+
+/* زر الإغلاق الدوار والمتغير الألوان */
+@keyframes aqxCloseSpin {
+    0% { color: #ff4757; transform: rotate(0deg); }
+    50% { color: #ff6b81; transform: rotate(180deg); }
+    100% { color: #ff4757; transform: rotate(360deg); }
+}
+
+.aqx-close-btn {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 45px;
+    height: 45px;
+    background: #ffffff;
+    border: 2px solid #ff4757;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #ff4757;
+    box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    z-index: 10;
+}
+
+.aqx-close-btn:hover {
+    animation: aqxCloseSpin 0.5s ease;
+    background: #ff4757;
+    color: #ffffff;
+    box-shadow: 0 8px 25px rgba(255, 71, 87, 0.5);
+}
+
+.aqx-gateway-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+}
+
+.aqx-gateway-desc {
+    font-size: 16px;
+    font-weight: 500;
+    color: #475569;
+    margin-bottom: 30px;
+    line-height: 1.7;
+    padding: 0 10px;
+}
+
+/* إطار الإعلان - تصميم نبضي احترافي */
+@keyframes aqxNeonPulse {
+    0% { box-shadow: 0 0 10px rgba(13, 202, 240, 0.3); }
+    50% { box-shadow: 0 0 25px rgba(13, 110, 253, 0.6); }
+    100% { box-shadow: 0 0 10px rgba(13, 202, 240, 0.3); }
+}
+
+.aqx-ad-container {
+    width: 300px;
+    height: 250px;
+    margin: 0 auto 30px;
+    background: #f8fafc;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: aqxNeonPulse 2s infinite;
+    border: 2px solid transparent;
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+    background-image: linear-gradient(#f8fafc, #f8fafc), linear-gradient(135deg, #0d6efd, #0dcaf0);
+}
+
+/* مؤقت زمني أنيق */
+.aqx-gateway-timer {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 25px;
+    background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+    padding: 12px 25px;
+    border-radius: 50px;
+    display: inline-block;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.aqx-gateway-timer span {
+    color: #0d6efd;
+    font-size: 24px;
+    font-weight: 900;
+    margin: 0 8px;
+    text-shadow: 0 2px 10px rgba(13, 110, 253, 0.3);
+}
+
+/* زر الدخول - تأثير فخم */
+.aqx-enter-btn {
+    display: block;
+    width: 100%;
+    padding: 16px 0;
+    background: linear-gradient(135deg, #0d6efd, #0dcaf0);
+    color: #ffffff;
+    border: none;
+    border-radius: 16px;
+    font-size: 20px;
+    font-weight: 800;
+    font-family: 'Tajawal', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(13, 110, 253, 0.3);
+    outline: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.aqx-enter-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: all 0.5s ease;
+}
+
+.aqx-enter-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(13, 110, 253, 0.45);
+}
+
+.aqx-enter-btn:hover::after {
+    left: 100%;
+}
+
+@media (max-width: 480px) {
+    .aqx-gateway-content {
+        padding: 40px 20px 30px;
+        width: 95%;
+    }
+    .aqx-ad-container {
+        transform: scale(0.95);
+        margin-bottom: 20px;
+    }
+    .aqx-close-btn {
+        top: -10px;
+        right: -10px;
+    }
+}
+</style>
+
+<!-- هيكل الأقسام الـ 16 كاملة بدون أي نقص -->
+<div class="qarmani-tech-widget">
+    <h2 class="qarmani-tech-title">أقسام التقنية</h2>
+    <div class="qarmani-tech-grid">
+        
+        <a href="#" class="qarmani-tech-card" onclick="aqxOpenGateway(event, 'الكمبيوتر', 'اكتشف أحدث تقنيات الحواسيب، مراجعات العتاد، وحلول أنظمة التشغيل المتقدمة لبناء أجهزة فائقة الأداء.')">
+            <span class="qarmani-tech-icon">💻</span>
+            <span class="qarmani-tech-name">كمبيوتر</span>
+        </a>
+
+        <a href="#" class="qarmani-tech-card" onclick="aqxOpenGateway(event, 'الموبايل', 'تعرف على أحدث إصدارات الهواتف الذكية، المراجعات التقنية الدقيقة، وأفضل حلول مشاكل أنظمة التشغيل.')">
+            <span class="qarmani-tech-icon">📱</span>
+            <span class="qarmani-tech-name">موبايل</span>
+        </a>
+
+        <a href="#" class="qarmani-tech-card" onclick="aqxOpenGateway(event, 'تقنيات متنوعة', 'جولة شاملة في عالم التقنيات الحديثة، الأدوات المبتكرة، والابتكارات التي ترسم ملامح المستقبل التقني.')">
+            <span class="qarmani-tech-icon">🛠️</span>
+            <span class="qarmani-tech-name">تقنيات متنوعة</span>
+        </a>
+
+        <a href="#" class="qarmani-tech-card" onclick="aqxOpenGateway(event, 'الإنترنت', 'شروحات الشبكات، طرق تسريع التصفح، حماية الخصوصية، وكل ما يتعلق بعالم الويب الفسيح.')">
+            <span class="qarmani-tech-icon">🌐</span>
+            <span class="qarmani-tech-name">إنترنت</span>
+        </a>
+
+        <a href="#" class="qarmani-tech-card" onclick="aqxOpenGateway(event, 'مواقع التواصل الإجتماعي', 'أسرار وحلول منصات التواصل الاجتماعي، تحديثات الخوارزميات المستمرة، وطرق زيادة التفاعل باحترافية.')">
+            <span class="qarmani-tech-icon">💬</span>
+            <span class="qarmani-tech-name">مواقع التواصل</span>
+        </a>
+
+        <a href="#" class="qarmani-tech-card" onclick="aqxOpenGateway(event, 'برمجة وتصميم المواقع', 'دروس احترافية وشاملة في تطوير الواجهات الأمامية والخلفية، لغات البرمجة الحديثة، وهندسة المواقع.')">
+            <span class="qarmani-tech-icon">👨‍💻</span>
+            <span class="qarmani-tech-name">برمجة وتصميم مواقع</span>
+        </a>
+
+        <a href="#" class="qarmani-tech-card" onclick="aqxOpenGateway(event, 'التطبيقات الإلكترونية', 'استعراض لأفضل التطبيقات الخدمية والترفيهية التي تسهل حياتك اليومية وتزيد من إنتاجيتك.')">
+            <span class="qarmani-tech-icon">📲</span>
+            <span class="qarmani-tech-name">تطبيقات إلكترونية</span>
+        </a>
+
+        <a href="#" class="qarmani-tech-card" onclick="aqxOpenGateway(event, 'البرامج الإلكترونية', 'مكتبة متكاملة تضم أهم وأحدث برامج سطح المكتب الأساسية والاحترافية بجميع تخصصاتها.')">
+            <span class="qarmani-tech-icon">⚙️</span>
+            <span class="qarmani-tech-name">برامج إلكترونية</span>
+        </a>
+
+        <a href="#" class="qarmani-tech-card" onclick="aqxOpenGateway(event, 'الذكاء الاصطناعي', 'استكشف ثورة أدوات الذكاء الاصطناعي، تطورات تعلم الآلة، وكيفية توظيفها في أعمالك اليومية.')">
+            <span class="qarmani-tech-icon">🤖</span>
+            <span class="qarmani-tech-name">الذكاء الاصطناعي</span>
+        </a>
+
+        <a href="#" class="qarmani-tech-card" onclick="aqxOpenGateway(event, 'الأمن السيبراني', 'دليلك الشامل لحماية البيانات، تأمين الأجهزة والشبكات، والوقاية من أحدث التهديدات والاختراقات.')">
+            <span class="qarmani-tech-icon">🛡️</span>
+            <span class="qarmani-tech-name">الأمن السيبراني</span>
+        </a>
+
+        <a href="#" class="qarmani-tech-card" onclick="aqxOpenGateway(event, 'الحوسبة السحابية', 'شروحات متقدمة للسيرفرات، الاستضافات المتنوعة، وتخزين وإدارة البيانات سحابياً بكفاءة عالية.')">
+            <span class="qarmani-tech-icon">☁️</span>
+            <span class="qarmani-tech-name">الحوسبة السحابية</span>
+        </a>
+
+        <a href="#" class="qarmani-tech-card" onclick="aqxOpenGateway(event, 'شبكات واتصالات', 'أساسيات بناء وإدارة الشبكات، بروتوكولات الاتصال الحديثة، وإعداد أجهزة التوجيه باحتراف.')">
+            <span class="qarmani-tech-icon">📡</span>
+            <span class="qarmani-tech-name">شبكات واتصالات</span>
+        </a>
+
+        <a href="#" class="qarmani-tech-card" onclick="aqxOpenGateway(event, 'ألعاب وتطوير', 'مراجعات وتقييمات لأحدث الألعاب، وشروحات لمحركات تصميم وتطوير الألعاب المتقدمة.')">
+            <span class="qarmani-tech-icon">🎮</span>
+            <span class="qarmani-tech-name">ألعاب وتطوير</span>
+        </a>
+
+        <a href="#" class="qarmani-tech-card" onclick="aqxOpenGateway(event, 'إنترنت الأشياء', 'ربط الأجهزة الذكية، تطبيقات التحكم عن بعد، وبناء المنازل الذكية المستقبلية خطوة بخطوة.')">
+            <span class="qarmani-tech-icon">🏠</span>
+            <span class="qarmani-tech-name">إنترنت الأشياء</span>
+        </a>
+
+        <a href="#" class="qarmani-tech-card" onclick="aqxOpenGateway(event, 'أسئلة تقنية', 'إجابات وافية، شروحات مبسطة، وحلول عملية لأعقد المشاكل التقنية التي قد تواجهك في أجهزتك.')">
+            <span class="qarmani-tech-icon">❓</span>
+            <span class="qarmani-tech-name">أسئلة تقنية</span>
+        </a>
+
+        <a href="#" class="qarmani-tech-card" onclick="aqxOpenGateway(event, 'منوعات تقنية', 'مقالات ومواضيع حصرية ومميزة تلبي شغفك بكل ما هو غريب وجديد في عالم التقنية الواسع.')">
+            <span class="qarmani-tech-icon">🧩</span>
+            <span class="qarmani-tech-name">منوعات تقنية</span>
+        </a>
+
+    </div>
+</div>
+
+<!-- هيكل البوابة الفخمة (تكون مخفية افتراضياً) -->
+<div id="aqx-luxury-gateway" class="aqx-luxury-gateway">
+    <div class="aqx-gateway-content">
+        <button class="aqx-close-btn" onclick="aqxCloseGateway()" title="إلغاء وإغلاق">✖</button>
+        <h3 id="aqx-gateway-title" class="aqx-gateway-title"></h3>
+        <p id="aqx-gateway-desc" class="aqx-gateway-desc"></p>
+        
+        <!-- مساحة الإعلان المخصصة (يتم حقن الإعلان هنا برمجياً) -->
+        <div id="aqx-ad-container-inner" class="aqx-ad-container">
+            <!-- سيتم تحميل الإعلان هنا تلقائياً لضمان ظهوره -->
+        </div>
+
+        <div class="aqx-gateway-timer">سيتم التحويل تلقائياً بعد <span id="aqx-timer-count">15</span> ثانية</div>
+        <button id="aqx-enter-btn" class="aqx-enter-btn" onclick="aqxEnterNow()">الدخول الآن مباشرة</button>
+    </div>
+</div>
+
+<!-- السكريبت التشغيلي الخالي من الأخطاء -->
+<script>
+let aqxTimerInterval;
+let aqxTargetUrl = '#';
+
+// دالة العبقرية لحقن الإعلان وضمان ظهوره 100%
+function loadAqxAdSecurely() {
+    const adContainer = document.getElementById('aqx-ad-container-inner');
+    adContainer.innerHTML = ''; // تنظيف أي إعلان سابق
+    
+    // إنشاء إطار (Iframe) حي لحقن الإعلان بداخله بدون تعطيل الصفحة
+    const iframe = document.createElement('iframe');
+    iframe.width = "300";
+    iframe.height = "250";
+    iframe.frameBorder = "0";
+    iframe.scrolling = "no";
+    iframe.style.border = "none";
+    iframe.style.overflow = "hidden";
+    iframe.style.background = "transparent";
+    adContainer.appendChild(iframe);
+
+    // كتابة كود الإعلان داخل الإطار مباشرة
+    const iframeDoc = iframe.contentWindow.document;
+    iframeDoc.open();
+    iframeDoc.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <style>
+                body { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; background: transparent; }
+            </style>
+        </head>
+        <body>
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '6e875cc37b483ebcf03c1a3b504e2982',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                };
+            <\/script>
+            <script type="text/javascript" src="https://www.highperformanceformat.com/6e875cc37b483ebcf03c1a3b504e2982/invoke.js"><\/script>
+        </body>
+        </html>
+    `);
+    iframeDoc.close();
+}
+
+function aqxOpenGateway(event, sectionName, sectionDesc) {
+    event.preventDefault(); // إيقاف الانتقال الفوري
+    aqxTargetUrl = event.currentTarget.getAttribute('href'); 
+
+    // تحديث النصوص بحروف نقية بدون تنوين لمنع مشكلة الهاشتاج والأرقام
+    document.getElementById('aqx-gateway-title').innerHTML = 'مرحبا بك في قسم ' + sectionName;
+    document.getElementById('aqx-gateway-desc').innerHTML = sectionDesc;
+
+    // إظهار البوابة الفخمة
+    const gateway = document.getElementById('aqx-luxury-gateway');
+    gateway.classList.add('active');
+
+    // استدعاء دالة الإعلان فور ظهور البوابة
+    loadAqxAdSecurely();
+
+    // تشغيل المؤقت الزمني لـ 15 ثانية
+    let timeLeft = 15;
+    const timerSpan = document.getElementById('aqx-timer-count');
+    timerSpan.innerText = timeLeft;
+
+    clearInterval(aqxTimerInterval);
+    aqxTimerInterval = setInterval(() => {
+        timeLeft--;
+        timerSpan.innerText = timeLeft;
+        
+        if (timeLeft <= 0) {
+            clearInterval(aqxTimerInterval);
+            window.location.href = aqxTargetUrl;
+        }
+    }, 1000);
+}
+
+function aqxCloseGateway() {
+    clearInterval(aqxTimerInterval);
+    document.getElementById('aqx-luxury-gateway').classList.remove('active');
+    document.getElementById('aqx-ad-container-inner').innerHTML = ''; // إيقاف الإعلان عند الإغلاق لتخفيف الحمل
+}
+
+function aqxEnterNow() {
+    clearInterval(aqxTimerInterval);
+    window.location.href = aqxTargetUrl;
+}
+</script>
+<!-- نهاية كود الأقسام والبوابة -->
