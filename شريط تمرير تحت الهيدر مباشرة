@@ -1,0 +1,180 @@
+<!-- شريط AQX -->
+<div class="aqx-lux-ticker-wrapper" id="aqxTickerWrapper" dir="ltr" style="display:none;">
+    <div class="aqx-lux-ticker-track" id="aqxTickerTrack">
+        <a href="#" class="aqx-lux-card"><i class="fas fa-book-reader"></i> مقرأة أتقان للرجال</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-quran"></i> مقرأة أتقان للنساء</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-user-plus"></i> افتح حساب AQX</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-wallet"></i> محفظة AQX</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-shopping-cart"></i> متجر AQX</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-concierge-bell"></i> خدمات AQX</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-briefcase"></i> الوظائف</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-code"></i> اطلب كود</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-clipboard-list"></i> سجل الزوار</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-book"></i> مكتبة AQX</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-hands-helping"></i> تطوع</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-donate"></i> تبرع</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-heart"></i> أدعم AQX</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-graduation-cap"></i> أكاديمية AQX</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-hand-holding-heart"></i> AQX الخيرية</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-tools"></i> اطلب صنايعى</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-toolbox"></i> ادوات مجانية</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-comment-medical"></i> أسأل رحمة</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-tasks"></i> مهام يومية</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-coins"></i> اربح مع AQX</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-bullhorn"></i> شاهد اعلان</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-ad"></i> اعلن لدى AQX</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-exclamation-circle"></i> اعرض مشكلتك</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-coffee"></i> فنجان قهوة</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-utensils"></i> مطعم نجرسكو</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-project-diagram"></i> مشاريع AQX</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-ticket-alt"></i> احجز تذكرة. فندق</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-pen-nib"></i> أنشر مقالك</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-star"></i> مراجعات</a>
+        <a href="#" class="aqx-lux-card"><i class="fas fa-gamepad"></i> ألعب</a>
+    </div>
+</div>
+
+<style>
+.aqx-lux-ticker-wrapper {
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    overflow: hidden;
+    background: linear-gradient(270deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C, #D4AF37, #F3E5AB);
+    background-size: 1400% 1400%;
+    animation: aqxGoldFlow 12s ease infinite;
+    padding: 15px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin: 0 auto 20px auto; 
+    position: relative;
+    direction: ltr; 
+    z-index: 99;
+}
+
+@keyframes aqxGoldFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.aqx-lux-ticker-track {
+    display: flex;
+    width: max-content;
+    animation: aqxScroll 60s linear infinite; 
+    align-items: center;
+    will-change: transform;
+}
+
+.aqx-lux-ticker-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes aqxScroll {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); } 
+}
+
+.aqx-lux-card {
+    background: #141629; 
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    border-radius: 6px;
+    padding: 10px 22px;
+    margin: 0 8px;
+    color: #F3E5AB !important;
+    font-family: 'Noto Kufi Arabic', 'Tajawal', sans-serif;
+    font-size: 14.5px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none !important;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    direction: rtl;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.aqx-lux-card i {
+    color: #D4AF37;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.aqx-lux-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+    border-color: #FFF;
+    background: #0B0C15;
+    color: #FFF !important;
+}
+
+.aqx-lux-card:hover i {
+    transform: rotate(10deg) scale(1.1);
+    color: #FFF;
+}
+
+@media screen and (max-width: 768px) {
+    .aqx-lux-ticker-wrapper {
+        padding: 10px 0;
+        margin: 0 auto 15px auto;
+    }
+    .aqx-lux-card {
+        padding: 8px 18px;
+        font-size: 13px;
+        margin: 0 5px;
+    }
+    .aqx-lux-card i {
+        font-size: 1.1rem;
+    }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const ticker = document.getElementById("aqxTickerWrapper");
+    
+    // البحث عن الهيدر في قوالب بلوجر لنقل الشريط أسفله
+    const header = document.querySelector("header") || document.getElementById("header") || document.querySelector(".header-wrapper") || document.querySelector(".section[name='Header']");
+    
+    if (ticker && header) {
+        // نقل العنصر من الشريط الجانبي إلى أسفل الهيدر
+        header.parentNode.insertBefore(ticker, header.nextSibling);
+        ticker.style.display = "block";
+    } else if (ticker) {
+        // بديل في حال عدم التعرف على وسم الهيدر
+        document.body.insertBefore(ticker, document.body.firstChild);
+        ticker.style.display = "block";
+    }
+
+    const track = document.getElementById("aqxTickerTrack");
+    if(track) {
+        track.innerHTML += track.innerHTML;
+    }
+
+    const cards = document.querySelectorAll(".aqx-lux-card");
+    cards.forEach(function(card) {
+        card.addEventListener("click", function(e) {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (AudioContext) {
+                const ctx = new AudioContext();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(800, ctx.currentTime); 
+                osc.frequency.exponentialRampToValueAtTime(200, ctx.currentTime + 0.1);
+                
+                gain.gain.setValueAtTime(0.3, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
+                
+                osc.start();
+                osc.stop(ctx.currentTime + 0.1);
+            }
+        });
+    });
+});
+</script>
